@@ -20,25 +20,24 @@ export class AppComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver, private fns: AngularFireFunctions, private fieldService: FieldService) {
     this.fs = fieldService;
+
+    console.log('loading project data');
+    this.fieldService.loadProjectData('adolescent_preferences')
+      .then(result => {
+        console.log('project data received');
+        console.log(result);
+      });
   }
 
   ngOnInit(): void {
   }
 
   testProjectDataFunction(): void {
-    this.fieldService.loadProjectData('adolescent_preferences')
-      .then(result => {
-        console.log(result);
-      });
+
   }
 
   getValues(): void {
-    this.fieldService.loadUserRecords('adolescent_preferences')
-      .then((result) => {
-        // this.values = result;
-      }).catch((error) => {
-      console.log(error);
-    });
+
   }
 
   submit() {

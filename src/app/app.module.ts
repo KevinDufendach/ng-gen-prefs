@@ -23,6 +23,7 @@ import {NgRedcapModule} from '../../projects/ng-redcap/src/lib/ng-redcap.module'
 import {LayoutModule} from '@angular/cdk/layout';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import {FieldsModule} from './fields/fields.module';
 
 @NgModule({
   declarations: [
@@ -52,12 +53,14 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
+
+    FieldsModule,
   ],
   entryComponents: [
     LoginDialogComponent,
   ],
   providers: [
-    // { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }
+    { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }
   ],
   bootstrap: [AppComponent]
 })

@@ -13,8 +13,8 @@ export class LoginDialogComponent implements OnInit {
 
   constructor(
     private afAuth: AngularFireAuth,
-    public dialogRef: MatDialogRef<LoginDialogComponent>) {
-  }
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+  ) { }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {

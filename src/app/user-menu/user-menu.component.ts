@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
 import {LoginDialogComponent} from '../login-dialog/login-dialog.component';
 import {MatDialog} from '@angular/material';
+import {FieldService} from "../../../projects/ng-redcap/src/field/field.service";
 
 @Component({
   selector: 'app-user-menu',
@@ -16,12 +17,22 @@ export class UserMenuComponent implements OnInit {
   pass: '';
   user: User;
 
-  constructor(public afAuth: AngularFireAuth, public dialog: MatDialog) { }
+  constructor(public afAuth: AngularFireAuth, public dialog: MatDialog, private fieldService: FieldService) {
+  }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {
       this.user = user;
       this.isLoggedIn = (user !== null);
+
+      if (this.isLoggedIn) {
+        this.fieldService.loadUserRecords('adolescent_preferences')
+          .then((result) => {
+            // this.values = result;
+          }).catch((error) => {
+          console.log(error);
+        });
+      }
     });
   }
 
