@@ -5,23 +5,22 @@ import {REDCapFieldMetadata} from './redcap-field-metadata';
 import {RadioField} from './radio-field';
 import {CheckboxField} from './checkbox-field';
 
+export enum State {
+  UNINITIATED,
+  LOADING,
+  READY
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class FieldService {
   fields: Field[];
+  fieldState: State;
+  records: any;
+  recordState: State;
 
   constructor(private fns: AngularFireFunctions) {
-  }
-
-  static updateValues(fields: Field[], values: object): Field[] {
-    if (values && fields) {
-      for (const field of fields) {
-        field.assignValue(values);
-      }
-    }
-
-    return fields;
   }
 
   static getREDCapFormattedValues(fields: Field[]): object {
@@ -82,6 +81,16 @@ export class FieldService {
 
   }
 
+  updateValues(): Field[] {
+    if (this.records && this.fields) {
+      for (const field of this.fields) {
+        field.assignValue(this.records);
+      }
+    }
+
+    return this.fields;
+  }
+
   loadProjectData(form?: string): Promise<Field[]> {
     const getMetadata = this.fns.httpsCallable('getMetadata');
 
@@ -92,6 +101,7 @@ export class FieldService {
               .then((fieldList) => {
                 this.fields = fieldList;
 
+                this.updateValues();
                 resolve(this.fields);
               })
               .catch((e) => {
@@ -112,7 +122,8 @@ export class FieldService {
     return new Promise<any>((resolve, reject) => {
       getRecordExport({form})
         .subscribe(result => {
-            FieldService.updateValues(this.fields, result);
+            this.records = result;
+            this.updateValues();
             resolve(result);
           },
           error => {

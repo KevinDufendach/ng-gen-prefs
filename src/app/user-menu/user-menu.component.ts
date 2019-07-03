@@ -3,7 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
 import {LoginDialogComponent} from '../login-dialog/login-dialog.component';
 import {MatDialog} from '@angular/material';
-import {FieldService} from "../../../projects/ng-redcap/src/field/field.service";
+import {FieldService} from '../../../projects/ng-redcap/src/field/field.service';
 
 @Component({
   selector: 'app-user-menu',
