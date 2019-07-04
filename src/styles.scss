@@ -16,3 +16,8 @@ body {
 app-root {
   min-height: 100%;
 }
+
+.app-wrap label.mat-radio-label,
+.app-wrap label.mat-checkbox-layout {
+  white-space: normal;
+}
