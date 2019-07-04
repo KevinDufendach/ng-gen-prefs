@@ -19,6 +19,29 @@ export class REDCapService {
     this.config = cfg.config;
   }
 
+  getTestMetadata(form?: string): Promise<REDCapFieldMetadata[]> {
+    const testConfig = cfg.testConfig;
+
+    const options = {
+      uri: testConfig.uri,
+      headers: this.headers,
+      json: true, // Automatically parses the JSON string in the response
+    };
+
+    return new Promise<REDCapFieldMetadata[]>((resolve, reject) => {
+      const p1 = request.get(options);
+      const p2 = p1.then((result) => {
+        // ToDo: check to be sure data received are appropriately formatted
+        const resultData = <REDCapFieldMetadata[]> result;
+        resolve(resultData);
+      });
+      p2.catch((error) => {
+        console.log(error);
+        reject(error);
+      });
+    });
+  }
+
   getMetadata(form?: string): Promise<REDCapFieldMetadata[]> {
     const options = {
       uri: this.config.uri,

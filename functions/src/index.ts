@@ -19,8 +19,8 @@ export const getMetadata = functions.https.onCall((data, context) => {
 
   // Return promise from REDCap getMetadata class
   const rc = new REDCapService();
-  return rc.getMetadata(form);
-  // return rc.getTestMetaData(form);
+  // return rc.getMetadata(form);
+  return rc.getTestMetadata(form);
 });
 
 export const getRecord = functions.https.onCall((data, context) => {
