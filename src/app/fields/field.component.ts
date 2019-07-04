@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {Field, FieldType} from './field';
+import {Field, FieldType} from 'ng-redcap';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {};

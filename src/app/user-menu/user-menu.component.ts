@@ -3,7 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
 import {LoginDialogComponent} from '../login-dialog/login-dialog.component';
 import {MatDialog} from '@angular/material';
-import {FieldService} from '../../../projects/ng-redcap/src/field/field.service';
+import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -17,7 +17,7 @@ export class UserMenuComponent implements OnInit {
   pass: '';
   user: User;
 
-  constructor(public afAuth: AngularFireAuth, public dialog: MatDialog, private fieldService: FieldService) {
+  constructor(public afAuth: AngularFireAuth, public dialog: MatDialog, private fieldService: REDCapService) {
   }
 
   ngOnInit() {

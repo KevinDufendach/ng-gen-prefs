@@ -3,7 +3,7 @@ import {AngularFireFunctions} from '@angular/fire/functions';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
-import {FieldService} from '../../projects/ng-redcap/src/field/field.service';
+import {REDCapService} from 'ng-redcap';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +11,14 @@ import {FieldService} from '../../projects/ng-redcap/src/field/field.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  fs: FieldService;
+  fs: REDCapService;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private fns: AngularFireFunctions, private fieldService: FieldService) {
+  constructor(private breakpointObserver: BreakpointObserver, private fns: AngularFireFunctions, private fieldService: REDCapService) {
     this.fs = fieldService;
 
     console.log('loading project data');

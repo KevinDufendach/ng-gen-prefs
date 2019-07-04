@@ -19,7 +19,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AngularFireFunctionsModule, FUNCTIONS_ORIGIN} from '@angular/fire/functions';
-import {NgRedcapModule} from '../../projects/ng-redcap/src/lib/ng-redcap.module';
+
 import {LayoutModule} from '@angular/cdk/layout';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
@@ -45,7 +45,6 @@ import {FieldsModule} from './fields/fields.module';
 
     FlexLayoutModule,
     MatButtonModule,
-    NgRedcapModule,
     MatToolbarModule,
     LayoutModule,
     MatSidenavModule,

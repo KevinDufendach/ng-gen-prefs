@@ -25,6 +25,12 @@
       ],
       "ng-redcap/*": [
         "dist/ng-redcap/*"
+      ],
+      "ng-redcap-material": [
+        "dist/ng-redcap-material"
+      ],
+      "ng-redcap-material/*": [
+        "dist/ng-redcap-material/*"
       ]
     }
   }

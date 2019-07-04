@@ -14,7 +14,7 @@ export enum State {
 @Injectable({
   providedIn: 'root'
 })
-export class FieldService {
+export class REDCapService {
   fields: Field[];
   fieldState: State;
   records: any;
@@ -44,7 +44,7 @@ export class FieldService {
       let errEncountered = false;
 
       for (const rawField of redCapFieldMetadata) {
-        FieldService.buildFromMetadata(rawField)
+        REDCapService.buildFromMetadata(rawField)
           .then(newField => {
             fields.push(newField);
           })
@@ -65,7 +65,7 @@ export class FieldService {
   }
 
   static buildFromMetadata(rawField: REDCapFieldMetadata): Promise<Field> {
-    return new Promise<Field>((resolve, reject) => {
+    const result = new Promise<Field>((resolve, reject) => {
       switch (rawField.field_type) {
         case 'radio':
           resolve(new RadioField(rawField));
@@ -79,6 +79,7 @@ export class FieldService {
 
     });
 
+    return result;
   }
 
   updateValues(): Field[] {
@@ -97,7 +98,7 @@ export class FieldService {
     return new Promise<Field[]>((resolve, reject) => {
       getMetadata({form})
         .subscribe(metadata => {
-            FieldService.generateFieldsFromMetadataList(metadata)
+            REDCapService.generateFieldsFromMetadataList(metadata)
               .then((fieldList) => {
                 this.fields = fieldList;
 
@@ -135,7 +136,7 @@ export class FieldService {
   }
 
   submitFields(): Promise<any> {
-    const formattedValues = FieldService.getREDCapFormattedValues(this.fields);
+    const formattedValues = REDCapService.getREDCapFormattedValues(this.fields);
 
     return new Promise<any>((resolve, reject) => {
       const submitFieldsFn = this.fns.httpsCallable('submitFields');
