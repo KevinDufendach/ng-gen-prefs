@@ -20,10 +20,8 @@ export class REDCapService {
   }
 
   getTestMetadata(form?: string): Promise<REDCapFieldMetadata[]> {
-    const testConfig = cfg.testConfig;
-
     const options = {
-      uri: testConfig.uri,
+      uri: cfg.testConfig.uri,
       headers: this.headers,
       json: true, // Automatically parses the JSON string in the response
     };
