@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-title>{{field.fieldLabel}}</mat-card-title>
+  <mat-card-content>
+    <div>{{field.fieldNote}}</div>
+
+    <rcap-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></rcap-radio-control>
+    <rcap-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></rcap-checkbox-control>
+
+  </mat-card-content>
+</mat-card>
+
+

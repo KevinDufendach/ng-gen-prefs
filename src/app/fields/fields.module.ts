@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {FieldComponent} from './field.component';
 import {RadioControlComponent} from './radio-control/radio-control.component';
 import {CheckboxControlComponent} from './checkbox-control/checkbox-control.component';
+import { FieldCardComponent } from './field-card/field-card.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {CheckboxControlComponent} from './checkbox-control/checkbox-control.comp
     FieldComponent,
     RadioControlComponent,
     CheckboxControlComponent,
+    FieldCardComponent,
   ],
   exports: [
     FieldListComponent,

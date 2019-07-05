@@ -1,3 +1,4 @@
-<mat-card *ngFor="let field of fs.fields">
-  <rcap-field [field]="field"></rcap-field>
-</mat-card>
+<div *ngFor="let field of fs.fields" class="field-card-area">
+<!--  <rcap-field [field]="field"></rcap-field>-->
+  <app-field-card [field]="field"></app-field-card>
+</div>
