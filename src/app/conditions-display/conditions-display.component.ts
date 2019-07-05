@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {REDCapService} from 'ng-redcap';
 
 @Component({
   selector: 'app-conditions-display',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConditionsDisplayComponent implements OnInit {
 
-  constructor() { }
+  constructor(public fs: REDCapService) { }
 
   ngOnInit() {
   }

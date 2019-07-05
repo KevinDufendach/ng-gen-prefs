@@ -15,7 +15,7 @@ export enum State {
   providedIn: 'root'
 })
 export class REDCapService {
-  fields: Field[];
+  fields: Map<string, Field>;
   fieldState: State;
   records: any;
   recordState: State;
@@ -37,16 +37,16 @@ export class REDCapService {
     return formattedValues;
   }
 
-  static generateFieldsFromMetadataList(redCapFieldMetadata: REDCapFieldMetadata[]): Promise<Field[]> {
-    const fields = new Array<Field>();
+  static generateFieldsFromMetadataList(redCapFieldMetadata: REDCapFieldMetadata[]): Promise<Map<string, Field>> {
+    const fields = new Map<string, Field>();
 
-    return new Promise<Field[]>((resolve, reject) => {
+    return new Promise<Map<string, Field>>((resolve, reject) => {
       let errEncountered = false;
 
       for (const rawField of redCapFieldMetadata) {
         REDCapService.buildFromMetadata(rawField)
           .then(newField => {
-            fields.push(newField);
+            fields.set(newField.fieldName, newField);
           })
           .catch((error) => {
             reject('error when trying to build field');
@@ -82,20 +82,20 @@ export class REDCapService {
     return result;
   }
 
-  updateValues(): Field[] {
+  updateValues(): Map<string, Field> {
     if (this.records && this.fields) {
-      for (const field of this.fields) {
+      this.fields.forEach((field: Field) => {
         field.assignValue(this.records);
-      }
+      });
     }
 
     return this.fields;
   }
 
-  loadProjectData(form?: string): Promise<Field[]> {
+  loadProjectData(form?: string): Promise<Map<string, Field>> {
     const getMetadata = this.fns.httpsCallable('getMetadata');
 
-    return new Promise<Field[]>((resolve, reject) => {
+    return new Promise<Map<string, Field>>((resolve, reject) => {
       getMetadata({form})
         .subscribe(metadata => {
             REDCapService.generateFieldsFromMetadataList(metadata)
@@ -136,7 +136,7 @@ export class REDCapService {
   }
 
   submitFields(): Promise<any> {
-    const formattedValues = REDCapService.getREDCapFormattedValues(this.fields);
+    const formattedValues = REDCapService.getREDCapFormattedValues(Array.from(this.fields.values()));
 
     return new Promise<any>((resolve, reject) => {
       const submitFieldsFn = this.fns.httpsCallable('submitFields');
@@ -149,7 +149,16 @@ export class REDCapService {
           },
           error => {
             console.log(error);
+            reject(error);
           });
     });
+  }
+
+  getField(fieldName: string): Field {
+    if (this.fields.has(fieldName)) {
+      return this.fields.get(fieldName);
+    }
+
+    return null;
   }
 }
