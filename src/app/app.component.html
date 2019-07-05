@@ -4,7 +4,12 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>Options</mat-toolbar>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <button mat-raised-button class="mat-primary" (click)="testProjectDataFunction()">Get Fields</button>
+      <button mat-raised-button class="mat-primary" (click)="getValues()">Load Values</button>
+      <button mat-raised-button class="mat-primary" (click)="submit()">Submit</button>
+    </div>
     <app-field-list></app-field-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,17 +26,7 @@
       <span fxFlex></span>
       <app-user-menu></app-user-menu>
     </mat-toolbar>
-
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <button mat-raised-button class="mat-primary" (click)="testProjectDataFunction()">Get Fields</button>
-      <button mat-raised-button class="mat-primary" (click)="getValues()">Load Values</button>
-      <button mat-raised-button class="mat-primary" (click)="submit()">Submit</button>
-    </div>
-
-    <div *ngFor="let field of fs.fields">
-      <rcap-field [field]="field"></rcap-field>
-    </div>
-
+    <h1>Content</h1>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

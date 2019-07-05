@@ -24,6 +24,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
+import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {FieldsModule} from './fields/fields.module';
     MatDialogModule,
 
     FieldsModule,
+    ConditionsDisplayModule,
   ],
   entryComponents: [
     LoginDialogComponent,
