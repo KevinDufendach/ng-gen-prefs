@@ -4,6 +4,9 @@ import {AngularFireFunctions} from '@angular/fire/functions';
 import {REDCapFieldMetadata} from './redcap-field-metadata';
 import {RadioField} from './radio-field';
 import {CheckboxField} from './checkbox-field';
+import {HttpClient} from '@angular/common/http';
+
+export const TESTING = true;
 
 export enum State {
   UNINITIATED,
@@ -15,12 +18,12 @@ export enum State {
   providedIn: 'root'
 })
 export class REDCapService {
-  fields: Map<string, Field>;
+  fieldMap = new Map<string, Field>();
   fieldState: State;
   records: any;
   recordState: State;
 
-  constructor(private fns: AngularFireFunctions) {
+  constructor(private fns: AngularFireFunctions, private http: HttpClient) {
   }
 
   static getREDCapFormattedValues(fields: Field[]): object {
@@ -49,7 +52,6 @@ export class REDCapService {
             fields.set(newField.fieldName, newField);
           })
           .catch((error) => {
-            reject('error when trying to build field');
             errEncountered = true;
           });
 
@@ -60,6 +62,8 @@ export class REDCapService {
 
       if (!errEncountered) {
         resolve(fields);
+      } else {
+        reject('error when trying to build field');
       }
     });
   }
@@ -76,44 +80,63 @@ export class REDCapService {
         default:
           reject('Unknown field type');
       }
-
     });
 
     return result;
   }
 
   updateValues(): Map<string, Field> {
-    if (this.records && this.fields) {
-      this.fields.forEach((field: Field) => {
+    if (this.records && this.fieldMap) {
+      this.fieldMap.forEach((field: Field) => {
         field.assignValue(this.records);
       });
     }
 
-    return this.fields;
+    return this.fieldMap;
   }
 
   loadProjectData(form?: string): Promise<Map<string, Field>> {
-    const getMetadata = this.fns.httpsCallable('getMetadata');
-
     return new Promise<Map<string, Field>>((resolve, reject) => {
-      getMetadata({form})
-        .subscribe(metadata => {
-            REDCapService.generateFieldsFromMetadataList(metadata)
-              .then((fieldList) => {
-                this.fields = fieldList;
+      this.getTestMetadata('/assets/metadata.json')
+        .then(metadata => {
+          REDCapService.generateFieldsFromMetadataList(metadata)
+            .then((fieldList) => {
+              this.fieldMap = fieldList;
 
-                this.updateValues();
-                resolve(this.fields);
-              })
-              .catch((e) => {
-                reject(e);
-              });
-          },
-          error => {
-            reject(error);
-          });
-
+              this.updateValues();
+              resolve(this.fieldMap);
+            })
+            .catch((e) => {
+              reject(e);
+            });
+        })
+        .catch((e) => {
+            reject(e);
+          }
+        );
     });
+
+    // return new Promise<Map<string, Field>>((resolve, reject) => {
+    //       const getMetadata = this.fns.httpsCallable('getMetadata');
+    //
+    //       getMetadata({form})
+    //         .subscribe(metadata => {
+    //             REDCapService.generateFieldsFromMetadataList(metadata)
+    //               .then((fieldList) => {
+    //                 this.fieldMap = fieldList;
+    //
+    //                 this.updateValues();
+    //                 resolve(this.fieldMap);
+    //               })
+    //               .catch((e) => {
+    //                 reject(e);
+    //               });
+    //           },
+    //           error => {
+    //             reject(error);
+    //           });
+    //
+    //     });
 
   }
 
@@ -136,7 +159,7 @@ export class REDCapService {
   }
 
   submitFields(): Promise<any> {
-    const formattedValues = REDCapService.getREDCapFormattedValues(Array.from(this.fields.values()));
+    const formattedValues = REDCapService.getREDCapFormattedValues(Array.from(this.fieldMap.values()));
 
     return new Promise<any>((resolve, reject) => {
       const submitFieldsFn = this.fns.httpsCallable('submitFields');
@@ -154,11 +177,29 @@ export class REDCapService {
     });
   }
 
-  getField(fieldName: string): Field {
-    if (this.fields.has(fieldName)) {
-      return this.fields.get(fieldName);
+  public getField(fieldName: string): Field {
+    return (this.fieldMap.get(fieldName));
+  }
+
+  public value(fieldName: string): any {
+    if (this.fieldMap.has(fieldName)) {
+      return this.fieldMap.get(fieldName).getValue();
     }
 
-    return null;
+    return -1;
+  }
+
+  getTestMetadata(uri: string): Promise<REDCapFieldMetadata[]> {
+    return new Promise<REDCapFieldMetadata[]>((resolve, reject) => {
+      this.http.get<REDCapFieldMetadata[]>(uri)
+        .subscribe((result) => {
+          // ToDo: check to be sure data received are appropriately formatted
+          const resultData = result as REDCapFieldMetadata[];
+          resolve(resultData);
+        }, (error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
   }
 }

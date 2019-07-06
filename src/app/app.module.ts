@@ -25,6 +25,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {ConditionsDisplayModule} from './conditions-display/conditions-display.m
     AngularFireAuthModule,
     AngularFireFunctionsModule,
     FormsModule,
+    HttpClientModule,
 
     MatInputModule,
     BrowserAnimationsModule,

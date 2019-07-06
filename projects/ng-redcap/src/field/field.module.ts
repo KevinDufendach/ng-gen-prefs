@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [],
   exports: [],
-  imports: []
+  imports: [
+    HttpClientModule
+  ]
 })
 export class FieldModule {
 }
