@@ -4,7 +4,7 @@
     <div>{{field.fieldNote}}</div>
 
     <app-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></app-radio-control>
-    <rcap-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></rcap-checkbox-control>
+    <app-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></app-checkbox-control>
 
   </mat-card-content>
 </mat-card>
