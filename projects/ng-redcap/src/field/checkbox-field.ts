@@ -1,6 +1,6 @@
 import {Field, FieldType} from './field';
 
-export class CheckboxField extends Field {
+export class CheckboxField extends Field<object> {
   options: Map<string, string>;
   values = {};
 
@@ -35,6 +35,10 @@ export class CheckboxField extends Field {
 
   getType(): FieldType {
     return FieldType.Checkbox;
+  }
+
+  setValue(val: any) {
+
   }
 
   getValue() {

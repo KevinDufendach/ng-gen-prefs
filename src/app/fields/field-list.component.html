@@ -1,4 +1,6 @@
-<div *ngFor="let key of fs.fieldMap.keys()" class="field-card-area">
+<div *ngFor="let key of fs.fieldNames" class="field-card-area">
 <!--  <rcap-field [field]="field"></rcap-field>-->
   <app-field-card [field]="fs.getField(key)"></app-field-card>
 </div>
+
+<textarea>{{fs.fieldNames}}</textarea>

@@ -1,6 +1,6 @@
 import {Field, FieldType} from './field';
 
-export class RadioField extends Field {
+export class RadioField extends Field<string> {
   options: Map<string, string>;
   value: string;
 
@@ -36,5 +36,12 @@ export class RadioField extends Field {
     value[this.fieldName] = this.getValue();
 
     return value;
+  }
+
+  setValue(val: string) {
+    if (this.value !== val) {
+      this.value = val;
+      this.onValueChange(this.value);
+    }
   }
 }

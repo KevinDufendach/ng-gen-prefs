@@ -1,4 +1,5 @@
 import {REDCapFieldMetadata} from './redcap-field-metadata';
+import {Observer} from 'rxjs';
 
 export enum FieldType {
   Radio,
@@ -6,7 +7,7 @@ export enum FieldType {
   Other,
 }
 
-export abstract class Field {
+export abstract class Field<T> {
   fieldName: string;
   fieldType: FieldType;
   fieldLabel: string;
@@ -22,6 +23,8 @@ export abstract class Field {
   // matrixGroupName?: string;
   // matrixRanking?: string;
   // fieldAnnotation?: string;
+
+  observers: Observer<T>[];
 
   constructor(md: REDCapFieldMetadata) {
     this.fieldName = md.field_name;
@@ -48,13 +51,25 @@ export abstract class Field {
     return options;
   }
 
+  subscribe(observer: Observer<T>) {
+    this.observers.push(observer);
+  }
+
+  onValueChange(val: T) {
+    this.observers.forEach(observer => {
+      observer.next(val);
+    });
+  }
+
   abstract getType(): FieldType;
 
   abstract setOptions(optionsString: string);
 
   abstract assignValue(values: object);
 
-  abstract getValue();
+  abstract getValue(): T;
+
+  abstract setValue(val: T);
 
   abstract getREDCapFormattedValues(): object;
 }

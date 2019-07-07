@@ -5,6 +5,7 @@ import {REDCapFieldMetadata} from './redcap-field-metadata';
 import {RadioField} from './radio-field';
 import {CheckboxField} from './checkbox-field';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 export const TESTING = true;
 
@@ -18,15 +19,15 @@ export enum State {
   providedIn: 'root'
 })
 export class REDCapService {
-  fieldMap = new Map<string, Field>();
-  fieldState: State;
+  fieldMap = new Map<string, Field<any>>();
+  fieldNames = new Array<string>();
   records: any;
   recordState: State;
 
   constructor(private fns: AngularFireFunctions, private http: HttpClient) {
   }
 
-  static getREDCapFormattedValues(fields: Field[]): object {
+  static getREDCapFormattedValues(fields: Field<any>[]): object {
     const formattedValues = {};
 
     for (const field of fields) {
@@ -40,10 +41,10 @@ export class REDCapService {
     return formattedValues;
   }
 
-  static generateFieldsFromMetadataList(redCapFieldMetadata: REDCapFieldMetadata[]): Promise<Map<string, Field>> {
-    const fields = new Map<string, Field>();
+  static generateFieldsFromMetadataList(redCapFieldMetadata: REDCapFieldMetadata[]): Promise<Map<string, Field<any>>> {
+    const fields = new Map<string, Field<any>>();
 
-    return new Promise<Map<string, Field>>((resolve, reject) => {
+    return new Promise<Map<string, Field<any>>>((resolve, reject) => {
       let errEncountered = false;
 
       for (const rawField of redCapFieldMetadata) {
@@ -68,8 +69,8 @@ export class REDCapService {
     });
   }
 
-  static buildFromMetadata(rawField: REDCapFieldMetadata): Promise<Field> {
-    const result = new Promise<Field>((resolve, reject) => {
+  static buildFromMetadata(rawField: REDCapFieldMetadata): Promise<Field<any>> {
+    const result = new Promise<Field<any>>((resolve, reject) => {
       switch (rawField.field_type) {
         case 'radio':
           resolve(new RadioField(rawField));
@@ -85,9 +86,9 @@ export class REDCapService {
     return result;
   }
 
-  updateValues(): Map<string, Field> {
+  updateValues(): Map<string, Field<any>> {
     if (this.records && this.fieldMap) {
-      this.fieldMap.forEach((field: Field) => {
+      this.fieldMap.forEach((field: Field<any>) => {
         field.assignValue(this.records);
       });
     }
@@ -95,13 +96,18 @@ export class REDCapService {
     return this.fieldMap;
   }
 
-  loadProjectData(form?: string): Promise<Map<string, Field>> {
-    return new Promise<Map<string, Field>>((resolve, reject) => {
+  loadProjectData(form?: string): Promise<Map<string, Field<any>>> {
+    return new Promise<Map<string, Field<any>>>((resolve, reject) => {
       this.getTestMetadata('/assets/metadata.json')
         .then(metadata => {
           REDCapService.generateFieldsFromMetadataList(metadata)
             .then((fieldList) => {
               this.fieldMap = fieldList;
+              this.fieldNames = Array.from(this.fieldMap.keys());
+
+              console.log('fieldnames:');
+
+              console.log(this.fieldNames);
 
               this.updateValues();
               resolve(this.fieldMap);
@@ -177,7 +183,7 @@ export class REDCapService {
     });
   }
 
-  public getField(fieldName: string): Field {
+  public getField(fieldName: string): Field<any> {
     return (this.fieldMap.get(fieldName));
   }
 
@@ -187,6 +193,13 @@ export class REDCapService {
     }
 
     return -1;
+  }
+
+  public valueObs(fieldName: string): Observable<any> {
+
+    if (this.fieldMap.has(fieldName)) {
+      return this.fieldMap.get(fieldName).getValue();
+    }
   }
 
   getTestMetadata(uri: string): Promise<REDCapFieldMetadata[]> {

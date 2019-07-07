@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Field, FieldType} from 'ng-redcap';
+import {Field, FieldType} from '../../../../projects/ng-redcap/src/field/field';
 
 
 const noop = () => {};
@@ -19,7 +19,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class FieldCardComponent implements ControlValueAccessor  {
 
-  @Input() field: Field;
+  @Input() field: Field<any>;
   private innerValue: any = '';
 
   // Placeholders for the callbacks which are later provided

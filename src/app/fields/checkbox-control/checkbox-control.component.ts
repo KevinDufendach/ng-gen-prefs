@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CheckboxField} from 'ng-redcap';
+import {CheckboxField} from '../../../../projects/ng-redcap/src/field/checkbox-field';
 
 @Component({
   selector: 'rcap-checkbox-control',

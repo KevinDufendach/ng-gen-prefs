@@ -3,7 +3,7 @@ import {AngularFireFunctions} from '@angular/fire/functions';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
-import {REDCapService} from 'ng-redcap';
+import {REDCapService} from '../../projects/ng-redcap/src/field/redcap.service';
 
 @Component({
   selector: 'app-root',

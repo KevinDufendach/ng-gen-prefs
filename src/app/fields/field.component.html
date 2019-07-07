@@ -1,5 +1,5 @@
 <h5>{{field.fieldLabel}}</h5>
 <p>{{field.fieldNote}}</p>
 
-<rcap-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></rcap-radio-control>
+<app-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></app-radio-control>
 <rcap-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></rcap-checkbox-control>
