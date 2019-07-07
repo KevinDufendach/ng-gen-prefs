@@ -2,7 +2,6 @@ import {Field, FieldType} from './field';
 
 export class RadioField extends Field<string> {
   options: Map<string, string>;
-  value: string;
 
   setOptions(optionsString: string) {
     this.options = Field.getOptionMapFromString(optionsString);
@@ -26,22 +25,11 @@ export class RadioField extends Field<string> {
     }
   }
 
-  getValue(): string {
-    return this.value;
-  }
-
   getREDCapFormattedValues(): object {
     const value = {};
 
-    value[this.fieldName] = this.getValue();
+    value[this.fieldName] = this.value;
 
     return value;
-  }
-
-  setValue(val: string) {
-    if (this.value !== val) {
-      this.value = val;
-      this.onValueChange(this.value);
-    }
   }
 }

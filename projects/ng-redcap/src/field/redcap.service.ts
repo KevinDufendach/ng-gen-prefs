@@ -189,7 +189,7 @@ export class REDCapService {
 
   public value(fieldName: string): any {
     if (this.fieldMap.has(fieldName)) {
-      return this.fieldMap.get(fieldName).getValue();
+      return this.fieldMap.get(fieldName).value;
     }
 
     return -1;
@@ -198,7 +198,7 @@ export class REDCapService {
   public valueObs(fieldName: string): Observable<any> {
 
     if (this.fieldMap.has(fieldName)) {
-      return this.fieldMap.get(fieldName).getValue();
+      return this.fieldMap.get(fieldName).value;
     }
   }
 

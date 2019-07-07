@@ -24,7 +24,10 @@ export abstract class Field<T> {
   // matrixRanking?: string;
   // fieldAnnotation?: string;
 
-  observers: Observer<T>[];
+  observers = new Array<Observer<T>>();
+
+  // tslint:disable-next-line:variable-name
+  private _value: T;
 
   constructor(md: REDCapFieldMetadata) {
     this.fieldName = md.field_name;
@@ -61,15 +64,22 @@ export abstract class Field<T> {
     });
   }
 
+  get value(): T {
+    return this._value;
+  }
+
+  set value(value: T) {
+    if (this._value !== value) {
+      this._value = value;
+      this.onValueChange(value);
+    }
+  }
+
   abstract getType(): FieldType;
 
   abstract setOptions(optionsString: string);
 
   abstract assignValue(values: object);
-
-  abstract getValue(): T;
-
-  abstract setValue(val: T);
 
   abstract getREDCapFormattedValues(): object;
 }

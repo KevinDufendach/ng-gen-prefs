@@ -2,7 +2,7 @@ import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {RadioField} from '../../../../projects/ng-redcap/src/field/radio-field';
 
-const noop = () => {};
+// const noop = () => {};
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -34,6 +34,7 @@ export class RadioControlComponent implements OnInit, ControlValueAccessor {
     console.log('setting value');
     if (this._internalValue !== val) {
       this._internalValue = val;
+      this.field.value = val;
       this.propogateChange(this._internalValue);
     }
   }
