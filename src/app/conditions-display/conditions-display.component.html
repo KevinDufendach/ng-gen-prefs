@@ -2,15 +2,15 @@
   conditions-display works!
 </p>
 
-<!--<div>-->
-<!--  {{fs.fieldMap.keys() | json}}-->
-<!--</div>-->
+<div>
+  {{fs.fieldNames | json}}
+</div>
 
-<!--<ul>-->
-<!--  <li *ngFor="let key of fs.fieldMap.keys()">-->
-<!--    {{key}}: ____-->
-<!--  </li>-->
-<!--</ul>-->
+<ul>
+  <li *ngFor="let key of fs.fieldNames">
+    {{key}}: {{fs.valueOf(key)}}
+  </li>
+</ul>
 
-<!--<h3 *ngIf="fs.value('adult_onset_adol')">adult_onset_adol value</h3>-->
-<!--<h3 *ngIf="fs.value('adult_onset_adol')">adult_onset_adol value</h3>-->
+<!--<h3 *ngIf="fs.valueOf('adult_onset_adol')">adult_onset_adol valueOf</h3>-->
+<!--<h3 *ngIf="fs.valueOf('adult_onset_adol')">adult_onset_adol valueOf</h3>-->

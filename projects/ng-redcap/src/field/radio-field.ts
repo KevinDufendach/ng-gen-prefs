@@ -17,7 +17,7 @@ export class RadioField extends Field<string> {
 
   assignValue(rawValues: object) {
     if (!this.fieldName) {
-      console.log('unable to assign value since no field name exists');
+      console.log('unable to assign valueOf since no field name exists');
     }
 
     if (rawValues.hasOwnProperty(this.fieldName)) {

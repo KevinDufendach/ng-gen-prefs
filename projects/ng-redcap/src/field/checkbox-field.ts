@@ -14,7 +14,7 @@ export class CheckboxField extends Field<object> {
 
   assignValue(rawValues: object) {
     if (!this.fieldName) {
-      console.log('unable to assign value since no field name exists');
+      console.log('unable to assign valueOf since no field name exists');
     }
 
     for (const key of this.options.keys()) {

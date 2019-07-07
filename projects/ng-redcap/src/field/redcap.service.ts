@@ -5,7 +5,7 @@ import {REDCapFieldMetadata} from './redcap-field-metadata';
 import {RadioField} from './radio-field';
 import {CheckboxField} from './checkbox-field';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Observer} from 'rxjs';
 
 export const TESTING = true;
 
@@ -187,19 +187,12 @@ export class REDCapService {
     return (this.fieldMap.get(fieldName));
   }
 
-  public value(fieldName: string): any {
+  public valueOf(fieldName: string): any {
     if (this.fieldMap.has(fieldName)) {
       return this.fieldMap.get(fieldName).value;
     }
 
-    return -1;
-  }
-
-  public valueObs(fieldName: string): Observable<any> {
-
-    if (this.fieldMap.has(fieldName)) {
-      return this.fieldMap.get(fieldName).value;
-    }
+    return null;
   }
 
   getTestMetadata(uri: string): Promise<REDCapFieldMetadata[]> {
