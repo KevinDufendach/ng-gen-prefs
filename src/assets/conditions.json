@@ -1,0 +1,742 @@
+{
+  "headers": {
+    "id": "unique_id",
+    "return_phenotype": "Returnable Phenotypes",
+    "condition": "Participant handout \"Condition\"",
+    "organs": "Participant handout \"Primary organ(s) or cancer",
+    "description": "Participant handout description",
+    "preventable": "Preventable (prior to onset of symptoms there is some treatment, therapy or lifestyle change that can be made to help prevent or avoid symptoms or reduce risk)",
+    "treatable": "Treatable (medications, therapies or lifestyle changes can reduce symptoms or cure disease)",
+    "adult_onset": "Potential exclusion category: Adult-onset (No prevention or intervention during childhood)",
+    "developmental": "Potential exclusion category: Developmental disorders or learning disabilities with no other clinical symptoms ",
+    "degenerative": "Potential exclusion category: Degenerative neurological conditions",
+    "carrier": "Potential exclusion category: Carrier Status for Autosomal Recessive Only",
+    "genes": "Genes Sequenced (approved by Clinical Annotations Workgroup for adult sites; *approved by CCHMC workgroup for Aim 1)",
+    "caw_approved": "AR  / XR,  SNVs  (approved by Clinical Annotations Workgroup for all sites)",
+    "snv_references": "References for SNVS"
+  },
+  "data": {
+    "Adrenal Glands": [
+      {
+        "id": "CAH",
+        "return_phenotype": "21-hydroxylase Deficient Congenital Adrenal Hyperplasia",
+        "condition": "21-hydroxylase Deficient Congenital Adrenal Hyperplasia",
+        "organs": [
+          "ADRENAL"
+        ],
+        "description": "Adrenal glands can't make enough chemical (cortisol) needed to protect body during stress",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "N/A",
+        "caw_approved": "CYP21A2, rs6467",
+        "snv_references": "OMIM, https://ghr.nlm.nih.gov/condition/21-hydroxylase-deficiency#diagnosis, http://www.ncbi.nlm.nih.gov/books/NBK1171/"
+      }
+    ],
+    "Bleeding Risk Increased": [
+      {
+        "id": "EDSVASC",
+        "return_phenotype": "Ehlers Danlos syndrome, vascular type",
+        "condition": "Connective tissue disorders with serious bleeding risk",
+        "organs": [
+          "VESSEL",
+          "JOINT"
+        ],
+        "description": "Many different types of conditions that include possibility of weak blood vessel walls and life threatening vessel rupture and bleeding",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "COL3A1",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "HHT",
+        "return_phenotype": "Hereditary hemorrhagic telangiectasia syndrome",
+        "condition": "Hereditary hemorrhagic telangiectasia syndrome",
+        "organs": [
+          "VESSEL"
+        ],
+        "description": "Hereditary disorder that causes abnormal blood vessels",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "SMAD4",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "FVLT",
+        "return_phenotype": "Factor 5 Leiden thrombophilia",
+        "condition": "Factor 5 Leiden thrombophilia",
+        "organs": [
+          "VESSEL"
+        ],
+        "description": "Increased risk of forming abnormal blood clots in deep veins (usually legs). Risk is further increased during pregnancy or when taking oral contraceptive pills or estrogen replacement therapy ",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "N/A",
+        "caw_approved": "FVL rs6025, c.1601G>A homozygous only",
+        "snv_references": "https://ghr.nlm.nih.gov/condition/factor-v-leiden-thrombophilia#; http://www.ncbi.nlm.nih.gov/books/NBK1368/; http://circ.ahajournals.org/content/107/15/e94.full"
+      }
+    ],
+    "Bones": [
+      {
+        "id": "OSTEOPET",
+        "return_phenotype": "Osteopetrosis",
+        "condition": "Osteopetrosis",
+        "organs": [
+          "BONE"
+        ],
+        "description": "Thickening of the bone causing less room for bone marrow",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": " false",
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "*TCIRG1",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Brain": [
+      {
+        "id": "HEMIMIGRAINEATAXIA",
+        "return_phenotype": "Hemiplegic migraine and sporadic ataxia",
+        "condition": "Hemiplegic migraine and sporadic ataxia",
+        "organs": [
+          "BRAIN",
+          "NERVE"
+        ],
+        "description": "Episodes of severe migraines with weakness on one side of the body that can last hours or days at a time. Some people can also have episodes of general poor muscle coordination with migraines",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "*CACNA1A",
+        "caw_approved": "",
+        "snv_references": ""
+      }
+    ],
+    "Cancer Risk Increased": [
+      {
+        "id": "BREASTCA",
+        "return_phenotype": "Breast cancer",
+        "condition": "Preventable cancer that might start during adulthood",
+        "organs": [
+          "CANCER"
+        ],
+        "description": "e.g. breast, ovaries, prostate, some colon cancers",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": true,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "BRCA1, BRCA2, CHEK2, PALB2",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "PANCRCA",
+        "return_phenotype": "Pancreatic cancer",
+        "condition": "Non-preventable cancers that might start during adulthood",
+        "organs": [
+          "CANCER"
+        ],
+        "description": "e.g. pancreatic cancer",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": true,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "PALB2",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "FMTC",
+        "return_phenotype": "Familial medullary thyroid cancer",
+        "condition": "Preventable cancers that might start during childhood or adulthood",
+        "organs": [
+          "CANCER"
+        ],
+        "description": "e.g. cancers of thyroid, parathyroids",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "RET",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "VHL",
+        "return_phenotype": "Von Hippel Lindau syndrome",
+        "condition": "Non-preventable cancers that might start during childhood or adulthood",
+        "organs": [
+          "CANCER"
+        ],
+        "description": "Different parts of the body can be affected by tumors or cancer (e.g Bloom syndrome, Li Fraumeni, von Hippel-Lindau)",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": "applies to Bloom syndrome, only"
+        },
+        "genes": "VHL",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "FPS",
+        "return_phenotype": "Polyposis syndromes with risk for colon cancer",
+        "condition": "polyposis syndromes that can start in childhood or adulthood and increase the risk for colon cancer",
+        "organs": [
+          "GI",
+          "COLON",
+          "CANCER"
+        ],
+        "description": "",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "BMPR1A, APC, MUTYH, SMAD4",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Eye": [
+      {
+        "id": "RB",
+        "return_phenotype": "Retinoblastoma",
+        "condition": "Retinoblastoma",
+        "organs": [
+          "EYE",
+          "CANCER"
+        ],
+        "description": "Cancer that begins in the retina (back of the eye)",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "RB1",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Heart Disease Risk Increased": [
+      {
+        "id": "ARRHYTHMIA",
+        "return_phenotype": "Arrhythmia syndromes with risk for sudden cardiac death (Can this include arrhythmogenic right ventricular cardiomyopathy?)",
+        "condition": "Arrhythmia syndromes with risk for sudden cardiac death ",
+        "organs": [
+          "HEART"
+        ],
+        "description": "Irregular heart beat that can interfere with the heart's ability to pump blood",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "PKP2, DSP, DSC2, TMEM43, DSG2, KCNE1, KCNQ1, KCNH2, SCN5A,KCNJ2",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "FHCHOL",
+        "return_phenotype": "Familial hypercholesterolemia",
+        "condition": "Familial hypercholesterolemia",
+        "organs": [
+          "HEART"
+        ],
+        "description": "Body is unable to remove bad cholesterol from blood which can lead to blockage in the arteries and early heart attacks",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "LDLR, APOB, PCSK9",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "HCM",
+        "return_phenotype": "Hypertrophic cardiomyopathy, dilated cardiomyopathy with risk for sudden cardiac death",
+        "condition": "Hypertrophic cardiomyopathy, dilated cardiomyopathy with risk for sudden cardiac death",
+        "organs": [
+          "HEART"
+        ],
+        "description": "Thickening of the heart muscle that may lead to cardiac arrest",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "MYBPC3, MYH7, TNNT2, TNN13, TPM1, MYL3, ACTC1, PRKAG2,  MYL2, LMNA",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "FABRY",
+        "return_phenotype": "Fabry disease",
+        "condition": "Fabry disease",
+        "organs": [
+          "HEART",
+          "KIDNEY",
+          "NERVE"
+        ],
+        "description": "Cells in the body are not able to break down a certain type of fat. The clogged cells  can cause heart and kidney disease and episodes of pain, especially in the hands and feet. Males are affected more often than females.",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "GLA",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Immune System": [
+      {
+        "id": "IMMUNODF",
+        "return_phenotype": "Immunodeficiency",
+        "condition": "Immunodeficiency",
+        "organs": [
+          "IMMUNE"
+        ],
+        "description": "Inherited disease of the immune system that reduces body's ability to fight off infection",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "*TYK2",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Joints": [
+      {
+        "id": "FMF",
+        "return_phenotype": "Familial Mediterranean fever",
+        "condition": "Familial Mediterranean fever",
+        "organs": [
+          "PAIN",
+          "JOINT"
+        ],
+        "description": "Episodes of pain in abdomen, chest or joints. Fever may occur with painful episodes",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "N/A",
+        "caw_approved": "MEFV, rs28940579, rs61752717",
+        "snv_references": "OMIM, https://ghr.nlm.nih.gov/condition/familial-mediterranean-fever, http://www.ncbi.nlm.nih.gov/books/NBK1227/"
+      }
+    ],
+    "Kidneys": [
+      {
+        "id": "WILMS",
+        "return_phenotype": "Wilms tumor",
+        "condition": "Wilms tumor",
+        "organs": [
+          "KIDNEY"
+        ],
+        "description": "Tumor in the kidneys",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "WT1",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Lungs": [
+      {
+        "id": "CF",
+        "return_phenotype": "Cystic Fibrosis",
+        "condition": "Cystic Fibrosis",
+        "organs": [
+          "LUNG",
+          "PANCREAS"
+        ],
+        "description": "Inherited condition that causes thick, sticky mucus that damages the lungs and digestive system",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "*CFTR",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "PPHN",
+        "return_phenotype": "Primary pulmonary hypertension",
+        "condition": "Primary pulmonary hypertension",
+        "organs": [
+          "LUNG"
+        ],
+        "description": "High blood pressure in the large vessels in the lungs that can lead to heart failure",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "*BMPR2",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "A1AT",
+        "return_phenotype": "Alpha-1 antitrypsin deficiency",
+        "condition": "Alpha-1 antitrypsin deficiency",
+        "organs": [
+          "LUNG",
+          "LIVER"
+        ],
+        "description": "Inherited condition that may cause serious lung disease or liver disease or both",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "*SERPINA1",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Metabolic Conditions": [
+      {
+        "id": "CARN",
+        "return_phenotype": "Carnitine Palmitoyltransferase II Deficiency",
+        "condition": "Metabolism disorders",
+        "organs": [
+          "LIVER",
+          "HEART",
+          "KIDNEY",
+          "PANCREAS",
+          "MUSCLE"
+        ],
+        "description": "Inherited condition that results in an enzyme deficiency. There are many different genetic metabolic conditions. Variant gene is inherited from both parents. Symptoms, treatments, and prognoses vary widely.",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "N/A",
+        "caw_approved": "CPT2 rs397509431",
+        "snv_references": "OMIM, https://ghr.nlm.nih.gov/condition/carnitine-palmitoyltransferase-ii-deficiency, http://www.ncbi.nlm.nih.gov/books/NBK1253/, http://www.babysfirsttest.org/newborn-screening/conditions/carnitine-"
+      },
+      {
+        "id": "OTCD",
+        "return_phenotype": "Ornithine transcarbamylase deficiency",
+        "condition": "Ornithine transcarbamylase deficiency",
+        "organs": [
+          "LIVER",
+          "BRAIN",
+          "STOMACH"
+        ],
+        "description": "Dangerous amounts of ammonia build up in the blood. This can cause death in babies. In some people symptoms aren’t recognized until later in childhood or even adulthood. Males are affected more often than females.",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "OTC",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "HEMOCHROMATOSIS",
+        "return_phenotype": "Hereditary hemochromatosis",
+        "condition": "Hereditary hemochromatosis",
+        "organs": [
+          "LIVER",
+          "HEART",
+          "PANCREAS"
+        ],
+        "description": "Body absorbs too much iron from foods. Unused iron is stored and can lead to liver, heart and pancreas failure",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "N/A",
+        "caw_approved": "HFE rs1800562 (c282y) homozygotes only",
+        "snv_references": "https://ghr.nlm.nih.gov/condition/hereditary-hemochromatosis#diagnosis, https://medlineplus.gov/ency/article/000327.htm, http://www.ncbi.nlm.nih.gov/books/NBK1440/"
+      }
+    ],
+    "Multiple System Tumor": [
+      {
+        "id": "COWDEN",
+        "return_phenotype": "Cowden syndrome",
+        "condition": "Cowden syndrome",
+        "organs": [
+          "CANCER"
+        ],
+        "description": "Benign tumors of the skin and mucous membranes. Increased risk for cancer in the thyroid, colon, uterus lining, kidney or skin",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "PTEN",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "TS",
+        "return_phenotype": "Tuberous sclerosis",
+        "condition": "Tuberous sclerosis",
+        "organs": [
+          "TUMOR"
+        ],
+        "description": "Tumors can develop in brain, eyes, heart, kidney, skin and lungs. Some people may have seizures, developmental delay and intellectual disability",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "TSC1, TSC2, ",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Medication Response": [
+      {
+        "id": "FLUOROPYRIMIDINE",
+        "return_phenotype": "Fluoropyrimidine toxicity",
+        "condition": "Fluoropyrimidine toxicity",
+        "organs": [
+          "MEDICINE"
+        ],
+        "description": "Fluoropyrimidines are a type of chemotherapy for cancerous tumors. People with certain gene variation need lower doses or different medicine.",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "N/A",
+        "caw_approved": "DPYD, rs67376798, rs3918290, rs55886062",
+        "snv_references": "https://www.pharmgkb.org/guideline/PA166109594"
+      },
+      {
+        "id": "MHT",
+        "return_phenotype": "Malignant hyperthermia susceptibility",
+        "condition": "Malignant hyperthermia susceptibility",
+        "organs": [
+          "MUSCLE"
+        ],
+        "description": "Certain medicines given during surgery can cause life threatening rise in body temperature and muscle rigidity",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "RYR1, CACNA1S",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Pancreas": [
+      {
+        "id": "MATUREDBM",
+        "return_phenotype": "Maturity onset diabetes in the young",
+        "condition": "Maturity onset diabetes in the young",
+        "organs": [
+          "PANCREAS"
+        ],
+        "description": "Heritable form of diabetes",
+        "preventable": true,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "HNF1A, HNF1B",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      },
+      {
+        "id": "NF2",
+        "return_phenotype": "NF2",
+        "condition": "Neurofibromatosis Type 2",
+        "organs": [
+          "TUMOR"
+        ],
+        "description": "Tumors can occur on nerves that go to the inner ear. Noncancerous tumors of other nerves and brain may occur",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": false,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": false,
+          "label": ""
+        },
+        "genes": "NF2",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ],
+    "Vas Deferens": [
+      {
+        "id": "XYINFERT",
+        "return_phenotype": "Male infertility ",
+        "condition": "Male infertility ",
+        "organs": [
+          "VASDEFERENS"
+        ],
+        "description": "Missing tubes that carry sperm out of the testes ",
+        "preventable": false,
+        "treatable": true,
+        "adult_onset": true,
+        "developmental": false,
+        "degenerative": false,
+        "carrier": {
+          "value": true,
+          "label": ""
+        },
+        "genes": "*CFTR",
+        "caw_approved": "N/A",
+        "snv_references": ""
+      }
+    ]
+  }
+}
