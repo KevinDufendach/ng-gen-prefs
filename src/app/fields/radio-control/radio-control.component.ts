@@ -20,8 +20,6 @@ export class RadioControlComponent implements OnInit, ControlValueAccessor {
   optionKeys: string[];
 
   @Input() field: RadioField;
-  // tslint:disable-next-line:variable-name
-  // private _value: string;
 
   constructor( ) {
   }
