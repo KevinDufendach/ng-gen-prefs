@@ -12,5 +12,5 @@
   </li>
 </ul>
 
-<!--<h3 *ngIf="fs.valueOf('adult_onset_adol')">adult_onset_adol valueOf</h3>-->
-<!--<h3 *ngIf="fs.valueOf('adult_onset_adol')">adult_onset_adol valueOf</h3>-->
+<h3 *ngIf="fs.valueOf('adult_onset_adol') == '1'">Positive</h3>
+<h3 *ngIf="!(fs.valueOf('adult_onset_adol') == '1')">Negative</h3>

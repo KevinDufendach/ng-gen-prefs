@@ -105,10 +105,6 @@ export class REDCapService {
               this.fieldMap = fieldList;
               this.fieldNames = Array.from(this.fieldMap.keys());
 
-              console.log('fieldnames:');
-
-              console.log(this.fieldNames);
-
               this.updateValues();
               resolve(this.fieldMap);
             })
