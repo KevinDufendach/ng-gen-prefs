@@ -1,66 +1,89 @@
-<div class="return-results-area">
-  <h3>Conditions that would be reported</h3>
-  <p>Based on your selections, the following conditions would be reported to you if they were discovered during genetic
-    testing</p>
-  <mat-accordion>
-    <ng-container *ngFor="let cond of cs.conditions">
-      <mat-expansion-panel *ngIf="cs.shouldDisplay(cond)">
-        <mat-expansion-panel-header>
-          <mat-panel-title class="positive-title">
-            {{cond.condition}}
-          </mat-panel-title>
-          <mat-panel-description *ngIf="isIncluded(cond.id)"><span fxFlex></span>
-            <mat-icon>lock</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>{{cond.description}}</p>
-        <div fxLayout="row">
-          <ul class="tags">
-            <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
-            <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
-            <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
-            <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
-          </ul>
-          <span fxFlex></span>
-          <app-organ-icon [organList]="cond.organs"></app-organ-icon>
+<div fxLayout="column" fxLayout.gt-md="row">
 
-        </div>
-        <!--      <div flex></div>-->
-        <!--      <img ng-repeat="organ in condition.organs" class="organ-img" style="float:right"-->
-        <!--           ng-src="{{::vm.getImageUrl(organ)}}"/>-->
-        <mat-action-row>
-<!--          <p>Override my selections:</p>-->
-          <button mat-button [ngClass]="{'mat-primary': isIncluded(cond.id)}"
-                  (click)="manualInclude(cond.id, true)">
-            <mat-icon>lock</mat-icon>
-            Always Report
-          </button>
-          <button mat-button [ngClass]="{'mat-warn': isExcluded(cond.id)}"
-                  (click)="manualExclude(cond.id, true)">
-            <mat-icon>block</mat-icon>
-            Never Report
-          </button>
-        </mat-action-row>
-      </mat-expansion-panel>
-    </ng-container>
-  </mat-accordion>
+  <div class="return-results-area" fxFlex.gt-md="50">
+    <h3>Conditions that would be reported</h3>
+    <p>Based on your selections, the following conditions would be reported to you if they were discovered during
+      genetic
+      testing</p>
+    <mat-accordion>
+      <ng-container *ngFor="let cond of cs.conditions">
+        <mat-expansion-panel *ngIf="cs.shouldDisplay(cond)">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="positive-title">
+              {{cond.condition}}
+            </mat-panel-title>
+            <mat-panel-description *ngIf="isIncluded(cond.id)"><span fxFlex></span>
+              <mat-icon>lock</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{cond.description}}</p>
+          <div fxLayout="row">
+            <ul class="tags">
+              <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
+            </ul>
+            <span fxFlex></span>
+            <app-organ-icon [organList]="cond.organs"></app-organ-icon>
+          </div>
+          <mat-action-row>
+            <button mat-button [ngClass]="{'mat-primary': isIncluded(cond.id)}"
+                    (click)="toggleInclude(cond.id)">
+              <mat-icon>lock</mat-icon>
+              Always Report
+            </button>
+            <button mat-button [ngClass]="{'mat-warn': isExcluded(cond.id)}"
+                    (click)="toggleExclude(cond.id)">
+              <mat-icon>block</mat-icon>
+              Never Report
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </div>
+
+  <div class="return-results-area" fxFlex.gt-md="50">
+    <h3>Conditions that would NOT be reported</h3>
+    <p>Based on your selections, the following conditions would NOT be reported to you if they were discovered during
+      genetic testing</p>
+    <mat-accordion>
+      <ng-container *ngFor="let cond of cs.conditions">
+        <mat-expansion-panel *ngIf="!cs.shouldDisplay(cond)">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="negative-title">
+              {{cond.condition}}
+            </mat-panel-title>
+            <mat-panel-description *ngIf="isExcluded(cond.id)"><span fxFlex></span>
+              <mat-icon>block</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{cond.description}}</p>
+          <div fxLayout="row">
+            <ul class="tags">
+              <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
+            </ul>
+            <span fxFlex></span>
+            <app-organ-icon [organList]="cond.organs"></app-organ-icon>
+          </div>
+          <mat-action-row>
+            <button mat-button [ngClass]="{'mat-primary': isIncluded(cond.id)}"
+                    (click)="toggleInclude(cond.id)">
+              <mat-icon>lock</mat-icon>
+              Always Report
+            </button>
+            <button mat-button [ngClass]="{'mat-warn': isExcluded(cond.id)}"
+                    (click)="toggleExclude(cond.id)">
+              <mat-icon>block</mat-icon>
+              Never Report
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </div>
 </div>
-
-<h1>Conditions that would not be returned:</h1>
-<mat-accordion>
-  <ng-container *ngFor="let cond of cs.conditions">
-    <mat-expansion-panel *ngIf="!cs.shouldDisplay(cond)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{cond.condition}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>{{cond.description}}</p>
-      <mat-action-row>
-        <button mat-button>Always show</button>
-        <button mat-button>Never show</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </ng-container>
-</mat-accordion>
-

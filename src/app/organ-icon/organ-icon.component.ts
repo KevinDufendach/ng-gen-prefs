@@ -45,7 +45,6 @@ export class OrganIconComponent implements OnInit {
     for (const o of this.organList) {
       this.imgUri.push('../../assets/img/' + this.fileMaps[o.toString()]);
     }
-    console.log(this.imgUri);
   }
 
 }

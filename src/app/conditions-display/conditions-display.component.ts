@@ -29,16 +29,20 @@ export class ConditionsDisplayComponent implements OnInit {
   ngOnInit() {
   }
 
-  manualInclude(id: string, state: boolean) {
-    this.fs.getField('manual_include_adol').value[id] = state;
-    if (state) {
+  toggleInclude(id: string) {
+    const newState = !this.isIncluded(id);
+
+    this.fs.getField('manual_include_adol').value[id] = newState;
+    if (newState) {
       this.fs.getField('manual_exclude_adol').value[id] = false;
     }
   }
 
-  manualExclude(id: string, state: boolean) {
-    this.fs.getField('manual_exclude_adol').value[id] = state;
-    if (state) {
+  toggleExclude(id: string) {
+    const newState = !this.isExcluded(id);
+
+    this.fs.getField('manual_exclude_adol').value[id] = newState;
+    if (newState) {
       this.fs.getField('manual_include_adol').value[id] = false;
     }
   }
