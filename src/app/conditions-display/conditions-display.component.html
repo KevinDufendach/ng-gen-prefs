@@ -23,7 +23,24 @@
         <button mat-button>Never show</button>
       </mat-action-row>
     </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
 
+<h1>Conditions that would not be returned:</h1>
+<mat-accordion>
+  <ng-container *ngFor="let cond of cs.conditions">
+    <mat-expansion-panel *ngIf="!cs.shouldDisplay(cond)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{cond.condition}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{cond.description}}</p>
+      <mat-action-row>
+        <button mat-button>Always show</button>
+        <button mat-button>Never show</button>
+      </mat-action-row>
+    </mat-expansion-panel>
   </ng-container>
 </mat-accordion>
 
