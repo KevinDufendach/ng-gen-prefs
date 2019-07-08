@@ -1,11 +1,4 @@
-<p>
-  conditions-display works!
-</p>
-
-<div>
-  {{fs.fieldNames | json}}
-</div>
-
+<h1>Conditions List</h1>
 <ul>
   <li *ngFor="let key of fs.fieldNames">
     {{key}}: {{fs.valueOf(key)}}
@@ -15,6 +8,19 @@
 <h3 *ngIf="fs.valueOf('adult_onset_adol') == '1'">Positive</h3>
 <h3 *ngIf="!(fs.valueOf('adult_onset_adol') == '1')">Negative</h3>
 
-<ul>
-  <li *ngFor="let cond of cs.conditions">{{cond.condition}}</li>
-</ul>
+<h1>Conditions to be returned:</h1>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let cond of cs.conditions">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{cond.condition}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{cond.description}}</p>
+      <mat-action-row>
+        <button mat-button>Always show</button>
+        <button mat-button>Never show</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+
