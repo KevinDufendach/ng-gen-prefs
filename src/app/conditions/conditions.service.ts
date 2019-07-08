@@ -15,8 +15,6 @@ export class ConditionsService {
 
   private initialize() {
     this.http.get('/assets/conditions.json').subscribe(data => {
-      console.log(data);
-
       this.conditions = data as Condition[];
     });
   }
@@ -28,8 +26,4 @@ export class ConditionsService {
       this.rs.valueOf('include_all_adol') !== '0') ||
       this.rs.valueOf('manual_include_adol')[cond.id]) && !this.rs.valueOf('manual_exclude_adol')[cond.id];
   }
-
-  // shouldDisplayCarrier(cond: Condition): boolean {
-  //   return (!cond.adult_onset || this.rs.valueOf('adlt_onset_adol') === '1');
-  // }
 }

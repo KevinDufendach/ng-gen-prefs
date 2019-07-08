@@ -56,6 +56,6 @@ export class ConditionsDisplayComponent implements OnInit {
   }
 
   isIncludedCarrier(id: string): boolean {
-
+    return false;
   }
 }
