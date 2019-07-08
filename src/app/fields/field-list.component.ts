@@ -7,7 +7,7 @@ import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.servic
   styleUrls: ['./field-list.component.scss']
 })
 export class FieldListComponent implements OnInit {
-  constructor(private fs: REDCapService) { }
+  constructor(public fs: REDCapService) { }
 
   ngOnInit() {
   }
