@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.service';
+import {ConditionsService} from '../conditions/conditions.service';
 
 @Component({
   selector: 'app-conditions-display',
@@ -8,7 +9,7 @@ import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.servic
 })
 export class ConditionsDisplayComponent implements OnInit {
 
-  constructor(public fs: REDCapService) { }
+  constructor(public fs: REDCapService, public cs: ConditionsService) { }
 
   ngOnInit() {
   }
