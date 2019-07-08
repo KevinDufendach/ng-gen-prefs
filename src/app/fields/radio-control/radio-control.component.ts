@@ -21,21 +21,21 @@ export class RadioControlComponent implements OnInit, ControlValueAccessor {
 
   @Input() field: RadioField;
   // tslint:disable-next-line:variable-name
-  _internalValue: string;
+  _value: string;
 
   constructor( ) {
   }
 
-  get internalValue() {
-    return this._internalValue;
+  get value() {
+    return this._value;
   }
 
-  set internalValue(val: any) {
+  set value(val: any) {
     console.log('setting value');
-    if (this._internalValue !== val) {
-      this._internalValue = val;
+    if (this._value !== val) {
+      this._value = val;
       this.field.value = val;
-      this.propogateChange(this._internalValue);
+      this.propogateChange(this._value);
     }
   }
 
@@ -61,6 +61,6 @@ export class RadioControlComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(val: any) {
-    this.internalValue = val;
+    this.value = val;
   }
 }

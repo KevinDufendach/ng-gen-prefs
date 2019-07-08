@@ -1,8 +1,6 @@
-<mat-radio-group class="radio-field-group" [(ngModel)]="internalValue">
+<mat-radio-group class="radio-field-group" [(ngModel)]="value">
   <mat-radio-button
     class="radio-field-button app-wrap"
     *ngFor="let key of optionKeys"
     [value]="key">{{field.getOptions().get(key)}}</mat-radio-button>
 </mat-radio-group>
-<p>Value: {{internalValue}}</p>
-<button mat-raised-button (click)="internalValue = '1'">Set to 1</button>
