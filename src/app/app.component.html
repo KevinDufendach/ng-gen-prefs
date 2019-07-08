@@ -1,32 +1,42 @@
+
+
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+
+  <mat-sidenav #drawer class="sidenav"
+               fixedInViewport
                fxLayout=""
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
-               [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Options</mat-toolbar>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <button mat-raised-button class="mat-primary" (click)="testProjectDataFunction()">Get Fields</button>
-      <button mat-raised-button class="mat-primary" (click)="getValues()">Load Values</button>
-      <button mat-raised-button class="mat-primary" (click)="submit()">Submit</button>
-    </div>
-    <app-field-list></app-field-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
+               [opened]="(isHandset$ | async) === false"
+               [autoFocus]="false">
+    <mat-toolbar class="sticky-toolbar">
+      <span>Options</span>
+      <span fxFlex></span>
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
       </button>
-      <span>Angular REDCap Demo</span>
+    </mat-toolbar>
+    <app-field-list></app-field-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="primary-toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">settings</mat-icon>
+      </button>
+      <span *ngIf="!(isHandset$ | async)">Genetic Results Decision Aid</span>
       <span fxFlex></span>
       <app-user-menu></app-user-menu>
     </mat-toolbar>
-    <h1>Content</h1>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

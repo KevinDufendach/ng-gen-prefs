@@ -1,7 +1,15 @@
+//.primary-toolbar {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  z-index: 2;
+//  width: 100% !important;
+//}
+
 .login-card {
   margin-right: auto;
   margin-left:auto;
-  width: 600px;
+  width: 400px;
 }
 
 .sidenav-container {
@@ -9,11 +17,18 @@
 }
 
 .sidenav {
-  width: 600px;
+  width: 400px;
+  max-width: 100% !important;
 }
 
 .sidenav .mat-toolbar {
-  background: inherit;
+  background-color: white;
+}
+
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .mat-toolbar.mat-primary {
