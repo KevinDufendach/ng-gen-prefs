@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
   save(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      this.fieldService.submitFields()
+      this.fieldService.submitFields({adolescent_preferences_complete: '0'})
         .then(() => {
           console.log('Save successful');
           this.openSnackBar('Selections Saved', 'dismiss');
@@ -53,11 +53,20 @@ export class AppComponent implements OnInit {
     });
   }
 
-  submit() {
-    this.save()
-      .then(() => {
-        console.log('moving on');
-      });
+  submit(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.fieldService.submitFields({adolescent_preferences_complete: '1'})
+        .then(() => {
+          console.log('Submit successful');
+          this.openSnackBar('Submit Successful', 'dismiss');
+          resolve();
+        }).catch(reason => {
+          console.log('rejected submission: ' + reason);
+          this.openSnackBar('There was an error submitting selections', 'dismiss');
+          reject(reason);
+        }
+      );
+    });
   }
 
   openSnackBar(message: string, action: string) {

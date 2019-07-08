@@ -159,8 +159,13 @@ export class REDCapService {
     });
   }
 
-  submitFields(): Promise<any> {
+  submitFields(manuallyIncludedValues?: {}): Promise<any> {
     const formattedValues = REDCapService.getREDCapFormattedValues(Array.from(this.fieldMap.values()));
+    if (manuallyIncludedValues) {
+      Object.keys(manuallyIncludedValues).forEach(key => {
+        formattedValues[key] = manuallyIncludedValues[key];
+      });
+    }
 
     return new Promise<any>((resolve, reject) => {
       const submitFieldsFn = this.fns.httpsCallable('submitFields');
