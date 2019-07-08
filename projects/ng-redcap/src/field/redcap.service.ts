@@ -5,7 +5,6 @@ import {REDCapFieldMetadata} from './redcap-field-metadata';
 import {RadioField} from './radio-field';
 import {CheckboxField} from './checkbox-field';
 import {HttpClient} from '@angular/common/http';
-import {Observable, Observer} from 'rxjs';
 
 export const TESTING = true;
 

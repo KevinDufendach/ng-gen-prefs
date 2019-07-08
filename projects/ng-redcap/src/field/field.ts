@@ -16,7 +16,7 @@ export abstract class Field<T> {
   // textValidationMin?: string;
   // textValidationMax?: string;
   // identifier?: string;
-  // branchingLogic?: string;
+  branchingLogic?: string;
   // requiredField?: string;
   // customAlignment?: string;
   // questionNumber?: string;
@@ -33,6 +33,7 @@ export abstract class Field<T> {
     this.fieldName = md.field_name;
     this.fieldLabel = md.field_label;
     this.fieldNote = md.field_note;
+    this.branchingLogic = md.branching_logic;
     this.fieldType = this.getType();
     this.setOptions(md.select_choices_or_calculations);
   }
@@ -73,6 +74,10 @@ export abstract class Field<T> {
       this._value = value;
       this.onValueChange(value);
     }
+  }
+
+  shouldDisplay(): boolean {
+    return (this.branchingLogic !== 'FALSE');
   }
 
   abstract getType(): FieldType;

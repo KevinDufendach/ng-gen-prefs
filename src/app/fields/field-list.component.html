@@ -1,6 +1,5 @@
-<div *ngFor="let key of fs.fieldNames" class="field-card-area">
-<!--  <rcap-field [field]="field"></rcap-field>-->
-  <app-field-card [field]="fs.getField(key)"></app-field-card>
+<div *ngFor="let key of fs.fieldNames">
+  <div *ngIf="fs.getField(key).shouldDisplay()" class="field-card-area">
+    <app-field-card [field]="fs.getField(key)"></app-field-card>
+  </div>
 </div>
-
-<textarea>{{fs.fieldNames}}</textarea>
