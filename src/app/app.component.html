@@ -1,7 +1,4 @@
-
-
 <mat-sidenav-container class="sidenav-container">
-
   <mat-sidenav #drawer class="sidenav"
                fixedInViewport
                fxLayout=""
@@ -9,7 +6,7 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false"
                [autoFocus]="false">
-    <mat-toolbar class="sticky-toolbar">
+    <mat-toolbar class="sticky-toolbar mat-elevation-z2">
       <span>Options</span>
       <span fxFlex></span>
       <button
@@ -24,7 +21,7 @@
     <app-field-list></app-field-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="primary-toolbar">
+    <mat-toolbar color="primary" class="primary-toolbar mat-elevation-z2">
       <button
         type="button"
         aria-label="Toggle sidenav"
