@@ -26,7 +26,7 @@ export enum Organ {
   MULTIPLE
 }
 
-export class Condition {
+export interface Condition {
   id: string;
   return_phenotype: string;
   condition: string;

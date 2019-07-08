@@ -10,7 +10,8 @@
 
 <h1>Conditions to be returned:</h1>
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let cond of cs.conditions">
+  <ng-container *ngFor="let cond of cs.conditions">
+    <mat-expansion-panel *ngIf="cs.shouldDisplay(cond)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{cond.condition}}
@@ -22,5 +23,7 @@
         <button mat-button>Never show</button>
       </mat-action-row>
     </mat-expansion-panel>
+
+  </ng-container>
 </mat-accordion>
 
