@@ -26,12 +26,14 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 import {HttpClientModule} from '@angular/common/http';
+import { OrganIconComponent } from './organ-icon/organ-icon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserMenuComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    OrganIconComponent
   ],
   imports: [
     BrowserModule,
