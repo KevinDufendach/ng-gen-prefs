@@ -7,15 +7,16 @@
                [opened]="(isHandset$ | async) === false"
                [autoFocus]="false">
     <mat-toolbar class="sticky-toolbar mat-elevation-z2">
-      <span>Options</span>
+      <img src="../assets/img/CCHMC_CBI_TAG_TM_RGB_420px_lores_margin.png" class="logo-img">
       <span fxFlex></span>
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
+      <button class="mat-accent"
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-raised-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+        <span>See Results</span>
+        <mat-icon aria-label="Side nav toggle icon">arrow_forward</mat-icon>
       </button>
     </mat-toolbar>
     <app-field-list></app-field-list>
@@ -23,16 +24,20 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="primary-toolbar mat-elevation-z2">
       <button
+        class="mat-accent"
         type="button"
         aria-label="Toggle sidenav"
         mat-raised-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">settings</mat-icon> Settings
+        <mat-icon aria-label="Side nav toggle icon">arrow_back</mat-icon>
+        Make Selections
       </button>
       <span *ngIf="!(isHandset$ | async)">Genetic Results Decision Aid</span>
       <span fxFlex></span>
-      <button mat-icon-button (click)="submit()"><mat-icon>save</mat-icon></button>
+      <button mat-icon-button (click)="submit()">
+        <mat-icon>save</mat-icon>
+      </button>
       <app-user-menu></app-user-menu>
     </mat-toolbar>
     <router-outlet></router-outlet>
