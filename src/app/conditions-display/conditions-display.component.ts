@@ -43,4 +43,11 @@ export class ConditionsDisplayComponent implements OnInit {
     }
   }
 
+  isIncluded(id: string): boolean {
+    return this.fs.getField('manual_include_adol').value[id];
+  }
+
+  isExcluded(id: string): boolean {
+    return this.fs.getField('manual_exclude_adol').value[id];
+  }
 }

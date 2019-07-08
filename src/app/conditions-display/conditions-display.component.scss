@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 ul.tags {
   display: inline;
   margin: 0;
@@ -25,4 +27,12 @@ ul.tags li:last-child:after {
 .inapplicable {
   opacity: 0.2;
   text-decoration: line-through;
+}
+
+.return-results-area {
+  padding: 16px;
+}
+
+.positive-title {
+  color: $primary-dark;
 }

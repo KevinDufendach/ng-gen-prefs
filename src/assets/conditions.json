@@ -224,13 +224,13 @@
   {
     "id": "FPS",
     "return_phenotype": "Polyposis syndromes with risk for colon cancer",
-    "condition": "polyposis syndromes that can start in childhood or adulthood and increase the risk for colon cancer",
+    "condition": "Polyposis syndromes that can start in childhood or adulthood and increase the risk for colon cancer",
     "organs": [
       "GI",
       "COLON",
       "CANCER"
     ],
-    "description": "",
+    "description": "Inherited colon polyps that can turn into cancer. Some types of polyps can cause serious bleeding.",
     "preventable": true,
     "treatable": true,
     "adult_onset": false,
@@ -275,7 +275,7 @@
     "organs": [
       "HEART"
     ],
-    "description": "Irregular heart beat that can interfere with the heart's ability to pump blood",
+    "description": "Irregular heartbeat that can interfere with the heart's ability to pump blood",
     "preventable": true,
     "treatable": true,
     "adult_onset": false,

@@ -1,33 +1,45 @@
-<h1>Conditions to be returned:</h1>
-<mat-accordion>
-  <ng-container *ngFor="let cond of cs.conditions">
-    <mat-expansion-panel *ngIf="cs.shouldDisplay(cond)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{cond.condition}}: {{cond.id}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>{{cond.description}}</p>
-      <ul class="tags">
-        <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
-        <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
-        <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
-        <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
-      </ul>
-<!--      <div flex></div>-->
-      <!--      <img ng-repeat="organ in condition.organs" class="organ-img" style="float:right"-->
-      <!--           ng-src="{{::vm.getImageUrl(organ)}}"/>-->
-      <mat-action-row>
-        <button mat-button [ngClass]="{'mat-primary mat-raised-button': fs.getField('manual_include_adol').value[cond.id]}"
-                (click)="manualInclude(cond.id, true)">Always show
-        </button>
-        <button mat-button [ngClass]="{'mat-warn mat-raised-button': fs.getField('manual_exclude_adol').value[cond.id]}"
-                (click)="manualExclude(cond.id, true)">Never show
-        </button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </ng-container>
-</mat-accordion>
+<div class="return-results-area">
+  <h3>Conditions that would be reported</h3>
+  <p>Based on your selections, the following conditions would be reported to you if they were discovered during genetic
+    testing</p>
+  <mat-accordion>
+    <ng-container *ngFor="let cond of cs.conditions">
+      <mat-expansion-panel *ngIf="cs.shouldDisplay(cond)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="positive-title">
+            {{cond.condition}}
+          </mat-panel-title>
+          <mat-panel-description *ngIf="isIncluded(cond.id)"><span fxFlex></span>
+            <mat-icon>lock</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{cond.description}}</p>
+        <ul class="tags">
+          <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
+          <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
+          <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
+          <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
+        </ul>
+        <!--      <div flex></div>-->
+        <!--      <img ng-repeat="organ in condition.organs" class="organ-img" style="float:right"-->
+        <!--           ng-src="{{::vm.getImageUrl(organ)}}"/>-->
+        <mat-action-row>
+<!--          <p>Override my selections:</p>-->
+          <button mat-button [ngClass]="{'mat-primary': isIncluded(cond.id)}"
+                  (click)="manualInclude(cond.id, true)">
+            <mat-icon>lock</mat-icon>
+            Always Report
+          </button>
+          <button mat-button [ngClass]="{'mat-warn': isExcluded(cond.id)}"
+                  (click)="manualExclude(cond.id, true)">
+            <mat-icon>block</mat-icon>
+            Never Report
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</div>
 
 <h1>Conditions that would not be returned:</h1>
 <mat-accordion>
