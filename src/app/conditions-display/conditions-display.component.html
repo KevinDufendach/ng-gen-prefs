@@ -14,13 +14,26 @@
     <mat-expansion-panel *ngIf="cs.shouldDisplay(cond)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{cond.condition}}
+          {{cond.condition}}: {{cond.id}}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <p>{{cond.description}}</p>
+      <ul class="tags">
+        <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
+        <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
+        <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
+        <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
+      </ul>
+<!--      <div flex></div>-->
+      <!--      <img ng-repeat="organ in condition.organs" class="organ-img" style="float:right"-->
+      <!--           ng-src="{{::vm.getImageUrl(organ)}}"/>-->
       <mat-action-row>
-        <button mat-button>Always show</button>
-        <button mat-button>Never show</button>
+        <button mat-button [ngClass]="{'mat-primary mat-raised-button': fs.getField('manual_include_adol').value[cond.id]}"
+                (click)="manualInclude(cond.id, true)">Always show
+        </button>
+        <button mat-button [ngClass]="{'mat-warn mat-raised-button': fs.getField('manual_exclude_adol').value[cond.id]}"
+                (click)="manualExclude(cond.id, true)">Never show
+        </button>
       </mat-action-row>
     </mat-expansion-panel>
   </ng-container>

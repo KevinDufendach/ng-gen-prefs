@@ -29,4 +29,18 @@ export class ConditionsDisplayComponent implements OnInit {
   ngOnInit() {
   }
 
+  manualInclude(id: string, state: boolean) {
+    this.fs.getField('manual_include_adol').value[id] = state;
+    if (state) {
+      this.fs.getField('manual_exclude_adol').value[id] = false;
+    }
+  }
+
+  manualExclude(id: string, state: boolean) {
+    this.fs.getField('manual_exclude_adol').value[id] = state;
+    if (state) {
+      this.fs.getField('manual_include_adol').value[id] = false;
+    }
+  }
+
 }
