@@ -1,8 +1,14 @@
 import {Field, FieldType} from './field';
+import {REDCapFieldMetadata} from './redcap-field-metadata';
 
 export class CheckboxField extends Field<object> {
   options: Map<string, string>;
-  values = {};
+
+  constructor(md: REDCapFieldMetadata) {
+    super(md);
+
+    this.value = {};
+  }
 
   private static convertBoolToValue(val: boolean) {
     if (typeof val === 'undefined') {
@@ -20,7 +26,7 @@ export class CheckboxField extends Field<object> {
     for (const key of this.options.keys()) {
       const prop = this.fieldName + '___' + key.toLowerCase();
       if (rawValues.hasOwnProperty(prop)) {
-        this.values[key] = (rawValues[prop] === '1');
+        this.value[key] = (rawValues[prop] === '1');
       }
     }
   }
@@ -37,19 +43,11 @@ export class CheckboxField extends Field<object> {
     return FieldType.Checkbox;
   }
 
-  setValue(val: any) {
-
-  }
-
-  getValue() {
-    return this.values;
-  }
-
   getREDCapFormattedValues(): object {
     const values = {};
 
     this.options.forEach((value, key) => {
-      values[this.fieldName + '___' + key.toLowerCase()] = CheckboxField.convertBoolToValue(this.values[key]);
+      values[this.fieldName + '___' + key.toLowerCase()] = CheckboxField.convertBoolToValue(this.value[key]);
     });
 
     return values;
