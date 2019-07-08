@@ -26,14 +26,12 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 import {HttpClientModule} from '@angular/common/http';
-import { OrganIconComponent } from './organ-icon/organ-icon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserMenuComponent,
-    LoginDialogComponent,
-    OrganIconComponent
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +63,9 @@ import { OrganIconComponent } from './organ-icon/organ-icon.component';
     LoginDialogComponent,
   ],
   providers: [
-    { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }
+    {provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000'}
   ],
+  exports: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -14,12 +14,17 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <p>{{cond.description}}</p>
-        <ul class="tags">
-          <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
-          <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
-          <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
-          <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
-        </ul>
+        <div fxLayout="row">
+          <ul class="tags">
+            <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
+            <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
+            <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
+            <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier Condition</span></li>
+          </ul>
+          <span fxFlex></span>
+          <app-organ-icon [organList]="cond.organs"></app-organ-icon>
+
+        </div>
         <!--      <div flex></div>-->
         <!--      <img ng-repeat="organ in condition.organs" class="organ-img" style="float:right"-->
         <!--           ng-src="{{::vm.getImageUrl(organ)}}"/>-->
