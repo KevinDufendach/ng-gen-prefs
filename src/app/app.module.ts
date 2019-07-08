@@ -13,7 +13,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule, MatMenuModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -57,6 +57,7 @@ import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
+    MatSnackBarModule,
 
     FieldsModule,
     ConditionsDisplayModule,
