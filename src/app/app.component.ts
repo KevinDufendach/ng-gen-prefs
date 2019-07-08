@@ -37,20 +37,27 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save() {
-    this.fieldService.submitFields()
-      .then(() => {
-        console.log('Save successful');
-        this.openSnackBar('Selections Saved', 'dismiss');
-      }).catch(reason => {
-        console.log('rejected submission: ' + reason);
-        this.openSnackBar('There was an error saving selections', 'dismiss');
-      }
-    );
+  save(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.fieldService.submitFields()
+        .then(() => {
+          console.log('Save successful');
+          this.openSnackBar('Selections Saved', 'dismiss');
+          resolve();
+        }).catch(reason => {
+          console.log('rejected submission: ' + reason);
+          this.openSnackBar('There was an error saving selections', 'dismiss');
+          reject(reason);
+        }
+      );
+    });
   }
 
   submit() {
-    this.save();
+    this.save()
+      .then(() => {
+        console.log('moving on');
+      });
   }
 
   openSnackBar(message: string, action: string) {
