@@ -32,6 +32,7 @@
       </button>
       <span *ngIf="!(isHandset$ | async)">Genetic Results Decision Aid</span>
       <span fxFlex></span>
+      <button mat-icon-button (click)="submit()"><mat-icon>save</mat-icon></button>
       <app-user-menu></app-user-menu>
     </mat-toolbar>
     <router-outlet></router-outlet>

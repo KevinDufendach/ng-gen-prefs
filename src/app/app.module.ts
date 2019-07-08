@@ -26,12 +26,14 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 import {HttpClientModule} from '@angular/common/http';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserMenuComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    LogoutDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   entryComponents: [
     LoginDialogComponent,
+    LogoutDialogComponent,
   ],
   providers: [
     {provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000'}

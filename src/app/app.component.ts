@@ -32,14 +32,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  testProjectDataFunction(): void {
-
-  }
-
-  getValues(): void {
-
-  }
-
   submit() {
     this.fieldService.submitFields()
       .then(() => {
