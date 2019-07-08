@@ -54,4 +54,8 @@ export class ConditionsDisplayComponent implements OnInit {
   isExcluded(id: string): boolean {
     return this.fs.getField('manual_exclude_adol').value[id];
   }
+
+  isIncludedCarrier(id: string): boolean {
+
+  }
 }

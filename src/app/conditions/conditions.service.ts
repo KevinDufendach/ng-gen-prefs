@@ -24,9 +24,12 @@ export class ConditionsService {
   shouldDisplay(cond: Condition): boolean {
     return (((cond.preventable || this.rs.valueOf('preventable_adol') === '1') &&
       (cond.treatable || this.rs.valueOf('treatable_adol') === '1') &&
-      (!cond.adult_onset || this.rs.valueOf('adult_onset_adol') === '1')) ||
+      (!cond.adult_onset || this.rs.valueOf('adult_onset_adol') === '1') &&
+      this.rs.valueOf('include_all_adol') !== '0') ||
       this.rs.valueOf('manual_include_adol')[cond.id]) && !this.rs.valueOf('manual_exclude_adol')[cond.id];
-
-    // const carrierBool = (!cond.adult_onset || this.rs.valueOf('adlt_onset_adol') === '1');
   }
+
+  // shouldDisplayCarrier(cond: Condition): boolean {
+  //   return (!cond.adult_onset || this.rs.valueOf('adlt_onset_adol') === '1');
+  // }
 }
