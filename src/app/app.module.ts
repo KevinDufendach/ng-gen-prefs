@@ -22,11 +22,11 @@ import {AngularFireFunctionsModule, FUNCTIONS_ORIGIN} from '@angular/fire/functi
 
 import {LayoutModule} from '@angular/cdk/layout';
 import { UserMenuComponent } from './user-menu/user-menu.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { LoginDialogComponent } from './app-auth/login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 import {HttpClientModule} from '@angular/common/http';
-import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { LogoutDialogComponent } from './app-auth/logout-dialog/logout-dialog.component';
 import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
 
 @NgModule({

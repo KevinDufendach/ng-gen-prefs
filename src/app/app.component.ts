@@ -5,7 +5,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 import {REDCapService} from '../../projects/ng-redcap/src/field/redcap.service';
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {LogoutDialogComponent} from './logout-dialog/logout-dialog.component';
+import {LogoutDialogComponent} from './app-auth/logout-dialog/logout-dialog.component';
 import {SubmitDialogComponent} from "./submit-dialog/submit-dialog.component";
 
 @Component({

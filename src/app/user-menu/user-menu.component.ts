@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
-import {LoginDialogComponent} from '../login-dialog/login-dialog.component';
+import {LoginDialogComponent} from '../app-auth/login-dialog/login-dialog.component';
 import {MatDialog} from '@angular/material';
 import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.service';
-import {LogoutDialogComponent} from "../logout-dialog/logout-dialog.component";
+import {LogoutDialogComponent} from "../app-auth/logout-dialog/logout-dialog.component";
 
 @Component({
   selector: 'app-user-menu',
