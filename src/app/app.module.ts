@@ -28,6 +28,8 @@ import {ConditionsDisplayModule} from './conditions-display/conditions-display.m
 import {HttpClientModule} from '@angular/common/http';
 import { LogoutDialogComponent } from './app-auth/logout-dialog/logout-dialog.component';
 import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
+import {SmsLoginDisplayComponent} from './app-auth/sms-login-display/sms-login-display.component';
+import {AppAuthModule} from "./app-auth/app-auth.module";
 
 @NgModule({
   declarations: [
@@ -63,11 +65,13 @@ import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
 
     FieldsModule,
     ConditionsDisplayModule,
+    AppAuthModule,
   ],
   entryComponents: [
     LoginDialogComponent,
     LogoutDialogComponent,
     SubmitDialogComponent,
+    SmsLoginDisplayComponent,
   ],
   providers: [
     {provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000'}
