@@ -57,7 +57,6 @@ export class UserMenuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      // this.animal = result;
     });
   }
 
