@@ -1,6 +1,6 @@
 export class PhoneNumber {
-  country: string;
-  area: string;
+  country = '1';
+  area = '513';
   prefix: string;
   line: string;
 

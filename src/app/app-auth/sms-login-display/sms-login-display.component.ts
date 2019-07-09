@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PhoneNumber} from './phone-number';
 import {WindowService} from '../../window.service';
-import * as firebase from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {auth} from 'firebase/app';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-sms-login-display',
@@ -10,49 +12,54 @@ import * as firebase from 'firebase';
 })
 export class SmsLoginDisplayComponent implements OnInit {
   windowRef: any;
-
   phoneNumber = new PhoneNumber();
-
   verificationCode: string;
+  errorMessage = '';
 
-  user: any;
-
-  constructor(private win: WindowService) { }
+  constructor(
+    private win: WindowService,
+    private afAuth: AngularFireAuth,
+    private dialogRef: MatDialogRef<SmsLoginDisplayComponent>) {
+  }
 
   ngOnInit() {
+    this.afAuth.authState.subscribe(user => {
+      if (user !== null) {
+        this.dialogRef.close(user.uid + ' successfully logged in');
+      }
+    });
+
     this.windowRef = this.win.windowRef;
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    this.windowRef.recaptchaVerifier = new auth.RecaptchaVerifier('recaptcha-container');
 
     this.windowRef.recaptchaVerifier.render();
   }
 
 
   sendLoginCode() {
-
     const appVerifier = this.windowRef.recaptchaVerifier;
-
     const num = this.phoneNumber.e164;
 
-    firebase.auth().signInWithPhoneNumber(num, appVerifier)
+    this.afAuth.auth.signInWithPhoneNumber(num, appVerifier)
       .then(result => {
-
         this.windowRef.confirmationResult = result;
-
       })
-      .catch( error => console.log(error) );
+      .catch(error => {
+        return console.log(error);
+      });
 
   }
 
   verifyLoginCode() {
     this.windowRef.confirmationResult
       .confirm(this.verificationCode)
-      .then( result => {
-
-        this.user = result.user;
-
-      })
-      .catch( error => console.log(error, 'Incorrect code entered?'));
+      .catch(error => {
+        this.errorMessage = 'There was an error logging in. Did you enter the correct code?';
+        return console.log(error, 'Incorrect code entered?');
+      });
   }
 
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

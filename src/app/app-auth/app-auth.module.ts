@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SmsLoginDisplayComponent } from './sms-login-display/sms-login-display.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import {AppMaterialImportsModule} from '../app-material-imports/app-material-imports.module';
 
 @NgModule({
-  declarations: [SmsLoginDisplayComponent],
+  declarations: [],
   exports: [
-    SmsLoginDisplayComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppMaterialImportsModule,
   ]
 })
 export class AppAuthModule { }

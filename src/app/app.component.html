@@ -37,18 +37,9 @@
       </button>
       <span *ngIf="!(isHandset$ | async)">Genetic Results Decision Aid</span>
       <span fxFlex></span>
-      <button mat-button (click)="save()">
-        <mat-icon>save</mat-icon>
-        <span *ngIf="!(isHandset$ | async)"> Save</span>
-      </button>
-      <button mat-button (click)="submit()">
-        <mat-icon>send</mat-icon>
-        <span *ngIf="!(isHandset$ | async)"> Save & Submit</span>
-      </button>
+
       <app-user-menu></app-user-menu>
     </mat-toolbar>
-
-    <app-sms-login-display></app-sms-login-display>
 
     <router-outlet></router-outlet>
   </mat-sidenav-content>

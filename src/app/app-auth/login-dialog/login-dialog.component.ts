@@ -8,8 +8,9 @@ import {MatDialogRef} from '@angular/material';
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent implements OnInit {
-  email = '';
-  pass: '';
+  email: string;
+  pass: string;
+  errorMessage = '';
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -26,7 +27,10 @@ export class LoginDialogComponent implements OnInit {
 
   login(): void {
     this.afAuth.auth.signInWithEmailAndPassword(this.email, this.pass)
-      .catch(e => console.log(e.message));
+      .catch(e => {
+        this.errorMessage = 'There was an error logging in';
+        return console.log(e.message);
+      });
   }
 
   onNoClick(): void {
