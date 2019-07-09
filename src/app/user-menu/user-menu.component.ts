@@ -4,6 +4,7 @@ import {User} from 'firebase';
 import {LoginDialogComponent} from '../login-dialog/login-dialog.component';
 import {MatDialog} from '@angular/material';
 import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.service';
+import {LogoutDialogComponent} from "../logout-dialog/logout-dialog.component";
 
 @Component({
   selector: 'app-user-menu',
@@ -37,7 +38,15 @@ export class UserMenuComponent implements OnInit {
   }
 
   logout(): void {
-    this.afAuth.auth.signOut();
+    const dialogRef = this.dialog.open(LogoutDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.afAuth.auth.signOut();
+      }
+    });
   }
 
   openDialog(): void {
@@ -48,7 +57,6 @@ export class UserMenuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      // this.animal = result;
     });
   }
 

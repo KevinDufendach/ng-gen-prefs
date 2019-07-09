@@ -4,6 +4,9 @@ import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 import {REDCapService} from '../../projects/ng-redcap/src/field/redcap.service';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {LogoutDialogComponent} from './logout-dialog/logout-dialog.component';
+import {SubmitDialogComponent} from "./submit-dialog/submit-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +21,12 @@ export class AppComponent implements OnInit {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private fns: AngularFireFunctions, private fieldService: REDCapService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+              private fns: AngularFireFunctions,
+              private fieldService: REDCapService,
+              public dialog: MatDialog,
+              // tslint:disable-next-line:variable-name
+              private _snackBar: MatSnackBar) {
     this.fs = fieldService;
 
     console.log('loading project data');
@@ -32,21 +40,45 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  testProjectDataFunction(): void {
-
+  save(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.fieldService.submitFields({adolescent_preferences_complete: '0'})
+        .then(() => {
+          console.log('Save successful');
+          this.openSnackBar('Selections Saved', 'dismiss');
+          resolve();
+        }).catch(reason => {
+          console.log('rejected submission: ' + reason);
+          this.openSnackBar('There was an error saving selections', 'dismiss');
+          reject(reason);
+        }
+      );
+    });
   }
 
-  getValues(): void {
+  submit(): void {
+    const submitDialogRef = this.dialog.open(SubmitDialogComponent, {
+      width: '350px',
+    });
 
-  }
-
-  submit() {
-    this.fieldService.submitFields()
-      .then(() => {
-        console.log('Save successful');
-      }).catch(reason => {
-        console.log('rejected submission: ' + reason);
+    submitDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.fieldService.submitFields({adolescent_preferences_complete: '1'})
+          .then(() => {
+            console.log('Submit successful');
+            this.openSnackBar('Submit Successful', 'dismiss');
+          }).catch(reason => {
+            console.log('rejected submission: ' + reason);
+            this.openSnackBar('There was an error submitting selections', 'dismiss');
+          }
+        );
       }
-    );
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }

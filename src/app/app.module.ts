@@ -13,7 +13,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule, MatMenuModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,14 +26,16 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 import {HttpClientModule} from '@angular/common/http';
-import { OrganIconComponent } from './organ-icon/organ-icon.component';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserMenuComponent,
     LoginDialogComponent,
-    OrganIconComponent
+    LogoutDialogComponent,
+    SubmitDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,16 +59,20 @@ import { OrganIconComponent } from './organ-icon/organ-icon.component';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
+    MatSnackBarModule,
 
     FieldsModule,
     ConditionsDisplayModule,
   ],
   entryComponents: [
     LoginDialogComponent,
+    LogoutDialogComponent,
+    SubmitDialogComponent,
   ],
   providers: [
     // { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }
   ],
+  exports: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

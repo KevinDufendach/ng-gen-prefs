@@ -1,3 +1,5 @@
+@import '../styles.scss';
+
 //.primary-toolbar {
 //  position: fixed;
 //  top: 0;
@@ -35,4 +37,13 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.logo-img {
+  height: 56px;
+  width: auto;
+}
+
+.field-area {
+  background-color: $accent-dark;
 }

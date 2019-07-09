@@ -30,9 +30,18 @@ ul.tags li:last-child:after {
 }
 
 .return-results-area {
-  padding: 16px;
+  margin: 8px;
+  padding: 8px;
 }
 
 .positive-title {
   color: $primary-dark;
+}
+
+.negative-title {
+  color: $warn;
+}
+
+.strikethru {
+  text-decoration: line-through;
 }
