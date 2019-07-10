@@ -22,6 +22,7 @@ import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
 import {SmsLoginDisplayComponent} from './app-auth/sms-login-display/sms-login-display.component';
 import {AppAuthModule} from './app-auth/app-auth.module';
 import {AppMaterialImportsModule} from './app-material-imports/app-material-imports.module';
+import { InstructionsDialogComponent } from './instructions-dialog/instructions-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {AppMaterialImportsModule} from './app-material-imports/app-material-impo
     LogoutDialogComponent,
     SubmitDialogComponent,
     SmsLoginDisplayComponent,
+    InstructionsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import {AppMaterialImportsModule} from './app-material-imports/app-material-impo
     LogoutDialogComponent,
     SubmitDialogComponent,
     SmsLoginDisplayComponent,
+    InstructionsDialogComponent,
   ],
   providers: [
     // { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }

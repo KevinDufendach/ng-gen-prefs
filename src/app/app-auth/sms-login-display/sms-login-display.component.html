@@ -28,6 +28,7 @@
 </div>
 
 <div mat-dialog-actions>
+  <span fxFlex></span>
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-raised-button class="mat-primary" [disabled]="!windowRef.confirmationResult" (click)="verifyLoginCode()">
     Verify
