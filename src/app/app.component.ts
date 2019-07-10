@@ -5,8 +5,8 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 import {REDCapService} from '../../projects/ng-redcap/src/field/redcap.service';
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {LogoutDialogComponent} from './logout-dialog/logout-dialog.component';
-import {SubmitDialogComponent} from "./submit-dialog/submit-dialog.component";
+import {SubmitDialogComponent} from './submit-dialog/submit-dialog.component';
+import {InstructionsDialogComponent} from './instructions-dialog/instructions-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +38,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayInstructions();
+  }
+
+  displayInstructions(): void {
+    this.dialog.open(InstructionsDialogComponent, {
+      minWidth: '350px',
+      maxWidth: '600px',
+      hasBackdrop: true
+    });
   }
 
   save(): Promise<any> {

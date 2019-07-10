@@ -28,6 +28,7 @@ import {ConditionsDisplayModule} from './conditions-display/conditions-display.m
 import {HttpClientModule} from '@angular/common/http';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
+import { InstructionsDialogComponent } from './instructions-dialog/instructions-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
     UserMenuComponent,
     LoginDialogComponent,
     LogoutDialogComponent,
-    SubmitDialogComponent
+    SubmitDialogComponent,
+    InstructionsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
     LoginDialogComponent,
     LogoutDialogComponent,
     SubmitDialogComponent,
+    InstructionsDialogComponent,
   ],
   providers: [
     {provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000'}
