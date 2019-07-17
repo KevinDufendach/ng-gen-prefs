@@ -5,7 +5,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 import {REDCapService} from '../../projects/ng-redcap/src/field/redcap.service';
 import {MatDialog} from '@angular/material';
-import {InstructionsDialogComponent} from './instructions-dialog/instructions-dialog.component';
+import {EntryDialogComponent} from './entry-dialog/entry-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -36,13 +36,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayInstructions();
+    this.displayEntryDialog();
   }
 
-  displayInstructions(): void {
-    this.dialog.open(InstructionsDialogComponent, {
-      minWidth: '350px',
-      maxWidth: '600px',
+  displayEntryDialog(): void {
+    this.dialog.open(EntryDialogComponent, {
+      minWidth: '400px',
+      maxWidth: '800px',
       hasBackdrop: true
     });
   }
