@@ -37,3 +37,7 @@ app-root {
 .app-wrap label.mat-checkbox-layout {
   white-space: normal;
 }
+
+.app-space-between > * {
+  margin: 5px;
+}

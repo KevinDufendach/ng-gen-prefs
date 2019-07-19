@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {REDCapService} from '../../../projects/ng-redcap/src/field/redcap.service';
 
 @Component({
   selector: 'app-question-stepper',
@@ -7,18 +8,37 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./question-stepper.component.scss']
 })
 export class QuestionStepperComponent implements OnInit {
-  firstFormGroup: FormGroup;
+  // firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
+  manualFieldNames = [
+    'include_all_adol',
+    'preventable_adol',
+    'treatable_adol',
+    'adult_onset_adol',
+    'carrier_adol',
+    // 'parental_involve_adol',
+    // 'manual_include_adol',
+    // 'manual_exclude_adol',
+    // 'man_incl_car_adol',
+    // 'man_excl_car_adol',
+  ];
+
+  @Output() onComplete = new EventEmitter();
+
   // tslint:disable-next-line:variable-name
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, public rs: REDCapService) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
+    // this.firstFormGroup = this._formBuilder.group({
+    //   firstCtrl: ['', Validators.required]
+    // });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+  }
+
+  complete() {
+    this.onComplete.emit();
   }
 }

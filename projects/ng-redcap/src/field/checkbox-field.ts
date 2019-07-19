@@ -52,4 +52,8 @@ export class CheckboxField extends Field<object> {
 
     return values;
   }
+
+  getValueString(): string {
+    return 'getValueString not implemented';
+  }
 }

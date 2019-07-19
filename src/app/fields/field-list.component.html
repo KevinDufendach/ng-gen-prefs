@@ -1,5 +1,9 @@
-<div *ngFor="let key of fs.fieldNames">
-  <div *ngIf="fs.getField(key).shouldDisplay()" class="field-card-area">
-    <app-field-card [field]="fs.getField(key)"></app-field-card>
-  </div>
+<div class="field-card-area">
+  <ng-container *ngFor="let key of fs.fieldNames">
+    <mat-card *ngIf="fs.getField(key).shouldDisplay()" class="field-card-area" fxLayoutGap>
+      <mat-card-content>
+        <app-field-card [field]="fs.getField(key)"></app-field-card>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
 </div>

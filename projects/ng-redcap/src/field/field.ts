@@ -22,7 +22,8 @@ export abstract class Field<T> {
   // questionNumber?: string;
   // matrixGroupName?: string;
   // matrixRanking?: string;
-  // fieldAnnotation?: string;
+  fieldAnnotation?: string;
+  hasValue = false;
 
   observers = new Array<Observer<T>>();
 
@@ -35,6 +36,7 @@ export abstract class Field<T> {
     this.fieldNote = md.field_note;
     this.branchingLogic = md.branching_logic;
     this.fieldType = this.getType();
+    this.fieldAnnotation = md.field_annotation;
     this.setOptions(md.select_choices_or_calculations);
   }
 
@@ -70,6 +72,7 @@ export abstract class Field<T> {
   }
 
   set value(value: T) {
+    this.hasValue = value !== undefined;
     if (this._value !== value) {
       this._value = value;
       this.onValueChange(value);
@@ -87,6 +90,8 @@ export abstract class Field<T> {
   abstract assignValue(values: object);
 
   abstract getREDCapFormattedValues(): object;
+
+  abstract getValueString(): string;
 }
 
 

@@ -1,33 +1,29 @@
-<mat-horizontal-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+<!--<ul>-->
+<!--  <li *ngFor="let key of rs.fieldNames">{{key}}</li>-->
+<!--</ul>-->
+<mat-vertical-stepper linear #stepper>
+  <mat-step *ngFor="let key of manualFieldNames">
+    <ng-template matStepLabel>
+      <span *ngIf="!rs.getField(key).hasValue">{{rs.getField(key).fieldAnnotation}}</span>
+      <span *ngIf="rs.getField(key).hasValue">{{rs.getField(key).getValueString()}}</span>
+
+    </ng-template>
+    <app-field-card [field]="rs.getField(key)"></app-field-card>
+    <div class="mat-action-row app-space-between">
+      <span fxFlex></span>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+
+  <mat-step>
+    <ng-template matStepLabel>See Results</ng-template>
+    View the results of your selections.
+    <div class="mat-action-row app-space-between">
+      <span fxFlex></span>
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-button-button class="mat-primary" (click)="complete()">View Results</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
