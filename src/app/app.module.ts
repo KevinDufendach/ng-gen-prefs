@@ -45,7 +45,6 @@ import {MatStepperModule} from '@angular/material';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireFunctionsModule,
-    FormsModule,
     HttpClientModule,
 
     BrowserAnimationsModule,
@@ -59,6 +58,8 @@ import {MatStepperModule} from '@angular/material';
     ConditionsDisplayModule,
     AppAuthModule,
     MatStepperModule,
+
+    FormsModule,
     ReactiveFormsModule,
   ],
   entryComponents: [

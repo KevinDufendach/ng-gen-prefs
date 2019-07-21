@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Field, FieldType} from '../../../../projects/ng-redcap/src/field/field';
 
 
@@ -31,7 +31,7 @@ export class FieldCardComponent implements ControlValueAccessor  {
   // Access to FieldType enum
   FieldType = FieldType;
 
-  // get acessor
+  // get accessor
   get value(): any {
     return this.innerValue;
   }

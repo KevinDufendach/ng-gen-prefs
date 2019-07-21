@@ -4,8 +4,9 @@
     <h3 class="field-label">{{field.fieldLabel}}</h3>
     <p class="field-note">{{field.fieldNote}}</p>
 
-    <app-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></app-radio-control>
+    <app-radio-control
+      *ngIf="field.fieldType == FieldType.Radio"
+      [field]="field"></app-radio-control>
     <app-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></app-checkbox-control>
 
-<!--  </mat-card-content>-->
-<!--</mat-card>-->
+<!--<p>Control is valid: {{myValue ? 'true' : 'false'}}</p>-->

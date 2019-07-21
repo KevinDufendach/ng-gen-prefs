@@ -1,8 +1,17 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormGroup,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 import {Field, FieldType} from '../../../projects/ng-redcap/src/field/field';
 
-const noop = () => {};
+const noop = () => {
+};
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -10,24 +19,33 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
+export const CUSTOM_INPUT_VALIDATOR: any = {
+  provide: NG_VALIDATORS,
+  useExisting: forwardRef(() => FieldComponent),
+  multi: true,
+};
+
 @Component({
   selector: 'rcap-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.css'],
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+  providers: [
+    CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR,
+    CUSTOM_INPUT_VALIDATOR,
+  ]
 })
-export class FieldComponent implements ControlValueAccessor {
+export class FieldComponent implements ControlValueAccessor, Validator {
   @Input() field: Field<any>;
-  private innerValue: any = '';
-
+  // Access to FieldType enum
+  FieldType = FieldType;
+  myForm: FormGroup;
   // Placeholders for the callbacks which are later provided
+  private innerValue: any = '';
   // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
+  private onValidationChangeCallback: (_: any) => void = noop;
   private isDisabled: boolean;
-
-  // Access to FieldType enum
-  FieldType = FieldType;
 
   // get acessor
   get value(): any {
@@ -64,5 +82,21 @@ export class FieldComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onValidationChangeCallback = fn;
+  }
+
+  validate(control: FormControl): ValidationErrors | null {
+    return (this.isValid() ? null : {
+      valueExistsError: {
+        valid: false,
+      },
+    });
+  }
+
+  protected isValid() {
+    return (this.innerValue !== '');
   }
 }
