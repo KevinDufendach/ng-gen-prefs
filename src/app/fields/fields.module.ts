@@ -7,6 +7,8 @@ import {FieldComponent} from './field.component';
 import {RadioControlComponent} from './radio-control/radio-control.component';
 import {CheckboxControlComponent} from './checkbox-control/checkbox-control.component';
 import { FieldCardComponent } from './field-card/field-card.component';
+import {FlexModule} from '@angular/flex-layout';
+import {VisiblePipe} from './visible.pipe';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,15 @@ import { FieldCardComponent } from './field-card/field-card.component';
     RadioControlComponent,
     CheckboxControlComponent,
     FieldCardComponent,
+    VisiblePipe,
   ],
   exports: [
     FieldListComponent,
     FieldComponent,
     RadioControlComponent,
     CheckboxControlComponent,
+    FieldCardComponent,
+    VisiblePipe,
   ],
   imports: [
     CommonModule,
@@ -32,7 +37,8 @@ import { FieldCardComponent } from './field-card/field-card.component';
     MatRadioModule,
     FormsModule,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexModule,
   ]
 })
 export class FieldsModule { }

@@ -39,14 +39,9 @@ export class UserMenuComponent implements OnInit {
       this.user = user;
       this.isLoggedIn = (user !== null);
 
-      if (this.isLoggedIn) {
-        this.fieldService.loadUserRecords('adolescent_preferences')
-          .then((result) => {
-            // this.values = result;
-          }).catch((error) => {
-          console.log(error);
-        });
-      }
+      // if (this.isLoggedIn) {
+      //   this.fieldService.loadUserRecords('adolescent_preferences');
+      // }
     });
   }
 

@@ -1,5 +1,11 @@
 <h5>{{field.fieldLabel}}</h5>
 <p>{{field.fieldNote}}</p>
 
-<app-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></app-radio-control>
-<app-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></app-checkbox-control>
+<h3>Why doesn't this show up?</h3>
+
+<form [formGroup]="myForm">
+  <app-radio-control *ngIf="field.fieldType == FieldType.Radio" [field]="field"></app-radio-control>
+  <app-checkbox-control *ngIf="field.fieldType == FieldType.Checkbox" [field]="field"></app-checkbox-control>
+</form>
+
+<p>Form is valid: {{myForm.valid? 'true' : 'false'}}</p>

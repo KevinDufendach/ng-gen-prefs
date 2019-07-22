@@ -1,8 +1,15 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 import {RadioField} from '../../../../projects/ng-redcap/src/field/radio-field';
 
-// const noop = () => {};
+const noop = () => {};
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -10,16 +17,27 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
+export const CUSTOM_INPUT_VALIDATOR: any = {
+  provide: NG_VALIDATORS,
+  useExisting: forwardRef(() => RadioControlComponent),
+  multi: true,
+};
+
 @Component({
   selector: 'app-radio-control',
   templateUrl: './radio-control.component.html',
   styleUrls: ['./radio-control.component.css'],
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+  providers: [
+    CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR,
+    CUSTOM_INPUT_VALIDATOR,
+  ],
 })
-export class RadioControlComponent implements OnInit, ControlValueAccessor {
+export class RadioControlComponent implements OnInit, ControlValueAccessor, Validator {
   optionKeys: string[];
+  private onValidationChangeCallback: (_: any) => void = noop;
 
   @Input() field: RadioField;
+  // @Input('value') internalVal: any;
 
   constructor( ) {
   }
@@ -58,5 +76,21 @@ export class RadioControlComponent implements OnInit, ControlValueAccessor {
 
   writeValue(val: any) {
     this.value = val;
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onValidationChangeCallback = fn;
+  }
+
+  validate(control: FormControl): ValidationErrors | null {
+    return (this.isValid() ? null : {
+      valueExistsError: {
+        valid: false,
+      },
+    });
+  }
+
+  protected isValid() {
+    return (this.value && this.value !== '-1');
   }
 }

@@ -6,23 +6,26 @@ import {AppComponent} from './app.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AngularFireFunctionsModule, FUNCTIONS_ORIGIN} from '@angular/fire/functions';
 
 import {LayoutModule} from '@angular/cdk/layout';
-import { UserMenuComponent } from './user-menu/user-menu.component';
-import { LoginDialogComponent } from './app-auth/login-dialog/login-dialog.component';
+import {UserMenuComponent} from './user-menu/user-menu.component';
+import {LoginDialogComponent} from './app-auth/login-dialog/login-dialog.component';
 import {FieldsModule} from './fields/fields.module';
 import {ConditionsDisplayModule} from './conditions-display/conditions-display.module';
 import {HttpClientModule} from '@angular/common/http';
-import { LogoutDialogComponent } from './app-auth/logout-dialog/logout-dialog.component';
-import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
+import {LogoutDialogComponent} from './app-auth/logout-dialog/logout-dialog.component';
+import {SubmitDialogComponent} from './submit-dialog/submit-dialog.component';
 import {SmsLoginDisplayComponent} from './app-auth/sms-login-display/sms-login-display.component';
 import {AppAuthModule} from './app-auth/app-auth.module';
 import {AppMaterialImportsModule} from './app-material-imports/app-material-imports.module';
-import { InstructionsDialogComponent } from './instructions-dialog/instructions-dialog.component';
+import {InstructionsDialogComponent} from './instructions-dialog/instructions-dialog.component';
+import {QuestionStepperComponent} from './question-stepper/question-stepper.component';
+import {EntryDialogComponent} from './entry-dialog/entry-dialog.component';
+import {MatStepperModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { InstructionsDialogComponent } from './instructions-dialog/instructions-
     LogoutDialogComponent,
     SubmitDialogComponent,
     SmsLoginDisplayComponent,
-    InstructionsDialogComponent
+    InstructionsDialogComponent,
+    QuestionStepperComponent,
+    EntryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,6 @@ import { InstructionsDialogComponent } from './instructions-dialog/instructions-
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireFunctionsModule,
-    FormsModule,
     HttpClientModule,
 
     BrowserAnimationsModule,
@@ -53,6 +57,10 @@ import { InstructionsDialogComponent } from './instructions-dialog/instructions-
     FieldsModule,
     ConditionsDisplayModule,
     AppAuthModule,
+    MatStepperModule,
+
+    FormsModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [
     LoginDialogComponent,
@@ -60,11 +68,12 @@ import { InstructionsDialogComponent } from './instructions-dialog/instructions-
     SubmitDialogComponent,
     SmsLoginDisplayComponent,
     InstructionsDialogComponent,
+    EntryDialogComponent,
   ],
   providers: [
     // { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }
   ],
-  exports: [ ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

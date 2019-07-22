@@ -32,4 +32,8 @@ export class RadioField extends Field<string> {
 
     return value;
   }
+
+  getValueString(): string {
+    return this.options.get(this.value);
+  }
 }

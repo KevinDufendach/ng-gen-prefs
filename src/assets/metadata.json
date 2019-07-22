@@ -17,7 +17,7 @@
     "question_number": "",
     "matrix_group_name": "",
     "matrix_ranking": "",
-    "field_annotation": ""
+    "field_annotation": "All Results"
   },
   {
     "field_name": "preventable_adol",
@@ -37,7 +37,7 @@
     "question_number": "",
     "matrix_group_name": "",
     "matrix_ranking": "",
-    "field_annotation": ""
+    "field_annotation": "Preventable"
   },
   {
     "field_name": "treatable_adol",
@@ -57,7 +57,7 @@
     "question_number": "",
     "matrix_group_name": "",
     "matrix_ranking": "",
-    "field_annotation": ""
+    "field_annotation": "Treatable"
   },
   {
     "field_name": "adult_onset_adol",
@@ -77,7 +77,7 @@
     "question_number": "",
     "matrix_group_name": "",
     "matrix_ranking": "",
-    "field_annotation": ""
+    "field_annotation": "Adult Onset"
   },
   {
     "field_name": "carrier_adol",
@@ -97,7 +97,7 @@
     "question_number": "",
     "matrix_group_name": "",
     "matrix_ranking": "",
-    "field_annotation": ""
+    "field_annotation": "Carrier Status"
   },
   {
     "field_name": "parental_involve_adol",

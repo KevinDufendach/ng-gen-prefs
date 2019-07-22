@@ -12,6 +12,10 @@
       "element",
       "rcap",
       "kebab-case"
+    ],
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
     ]
   }
 }

@@ -1,5 +1,5 @@
-import {REDCapFieldMetadata} from './redcap-field-metadata';
 import {Observer} from 'rxjs';
+import {REDCapFieldMetadata} from './redcap-field-metadata';
 
 export enum FieldType {
   Radio,
@@ -9,7 +9,6 @@ export enum FieldType {
 
 export abstract class Field<T> {
   fieldName: string;
-  fieldType: FieldType;
   fieldLabel: string;
   fieldNote: string;
   // textValidationTypeOrShowSliderNumber?: string;
@@ -22,12 +21,24 @@ export abstract class Field<T> {
   // questionNumber?: string;
   // matrixGroupName?: string;
   // matrixRanking?: string;
-  // fieldAnnotation?: string;
+  fieldAnnotation?: string;
+  fieldType: FieldType;
+  hasValue = false;
 
   observers = new Array<Observer<T>>();
 
-  // tslint:disable-next-line:variable-name
-  private _value: T;
+  // constructor(
+  //   public fieldName: string,
+  //   public fieldLabel: string,
+  //   public fieldNote: string,
+  //   public branchingLogic: string,
+  //   public fieldAnnotation: string,
+  //   fieldType: string,
+  //   choices: string
+  // ) {
+  //   this.fieldType = this.getType();
+  //   this.setOptions(choices);
+  // }
 
   constructor(md: REDCapFieldMetadata) {
     this.fieldName = md.field_name;
@@ -35,7 +46,22 @@ export abstract class Field<T> {
     this.fieldNote = md.field_note;
     this.branchingLogic = md.branching_logic;
     this.fieldType = this.getType();
+    this.fieldAnnotation = md.field_annotation;
     this.setOptions(md.select_choices_or_calculations);
+  }
+
+  private _value: T;
+
+  get value(): T {
+    return this._value;
+  }
+
+  set value(value: T) {
+    this.hasValue = value !== undefined;
+    if (this._value !== value) {
+      this._value = value;
+      this.onValueChange(value);
+    }
   }
 
   static getOptionMapFromString(optionsString: string) {
@@ -65,17 +91,6 @@ export abstract class Field<T> {
     });
   }
 
-  get value(): T {
-    return this._value;
-  }
-
-  set value(value: T) {
-    if (this._value !== value) {
-      this._value = value;
-      this.onValueChange(value);
-    }
-  }
-
   shouldDisplay(): boolean {
     return (this.branchingLogic !== 'FALSE');
   }
@@ -87,6 +102,8 @@ export abstract class Field<T> {
   abstract assignValue(values: object);
 
   abstract getREDCapFormattedValues(): object;
+
+  abstract getValueString(): string;
 }
 
 
