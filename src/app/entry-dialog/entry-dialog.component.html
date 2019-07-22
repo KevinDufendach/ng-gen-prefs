@@ -8,8 +8,32 @@
     disease or increase your chances for developing a disease. It is possible researchers will not have a reason to
     contact you.</p>
   <h3>Please make your initial selections. You will have the chance to refine these selections later.</h3>
-  <app-question-stepper (complete)="close()"></app-question-stepper>
+  <mat-vertical-stepper linear #stepper>
+    <!--  <mat-step *ngFor="let field of (rs.fieldList | async) | visible">-->
+    <mat-step *ngFor="let key of manualFieldNames">
+      <ng-template matStepLabel>
+        <span *ngIf="!rs.getField(key).hasValue">{{rs.getField(key).fieldAnnotation}}</span>
+        <span *ngIf="rs.getField(key).hasValue">{{rs.getField(key).getValueString()}}</span>
+
+      </ng-template>
+      <app-field-card [field]="rs.getField(key)"></app-field-card>
+    </mat-step>
+
+    <!--  <mat-step>-->
+    <!--    <ng-template matStepLabel>Show Results</ng-template>-->
+    <!--    View the results of your selections.-->
+    <!--    <div class="mat-action-row space-between">-->
+    <!--      <button mat-raised-button matStepperPrevious>Back</button>-->
+    <!--    </div>-->
+    <!--  </mat-step>-->
+  </mat-vertical-stepper>
 </div>
+<div mat-dialog-actions class="mat-action-row">
+  <button mat-raised-button (click)="stepper.previous()">Back</button>
+  <button *ngIf="stepper.selectedIndex < 4" mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
+  <button *ngIf="stepper.selectedIndex >= 4" mat-raised-button class="mat-primary" (click)="close()">Show me my results</button>
+</div>
+
 <!--<div mat-dialog-actions>-->
 <!--  <span fxFlex></span>-->
 <!--  <button mat-raised-button class="mat-primary" (click)="close()">Continue</button>-->

@@ -7,19 +7,18 @@
 
     </ng-template>
     <app-field-card [field]="rs.getField(key)"></app-field-card>
-    <div class="mat-action-row space-between">
-      <button mat-raised-button matStepperPrevious>Back</button>
-      <button mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
-    </div>
   </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Show Results</ng-template>
-    View the results of your selections.
-    <div class="mat-action-row space-between">
-      <button mat-raised-button matStepperPrevious>Back</button>
-      <button mat-raised-button class="mat-primary" (click)="onComplete()">Show me my results</button>
-    </div>
-  </mat-step>
+<!--  <mat-step>-->
+<!--    <ng-template matStepLabel>Show Results</ng-template>-->
+<!--    View the results of your selections.-->
+<!--    <div class="mat-action-row space-between">-->
+<!--      <button mat-raised-button matStepperPrevious>Back</button>-->
+<!--    </div>-->
+<!--  </mat-step>-->
 </mat-vertical-stepper>
-
+<div class="mat-action-row space-between">
+  <button mat-raised-button (click)="stepper.previous()">Back</button>
+  <button *ngIf="stepper.selectedIndex < 4" mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
+  <button *ngIf="stepper.selectedIndex >= 4" mat-raised-button class="mat-primary" (click)="onComplete()">Show me my results</button>
+</div>
