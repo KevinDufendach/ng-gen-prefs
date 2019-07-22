@@ -32,6 +32,8 @@ ul.tags li:last-child:after {
 .return-results-area {
   margin: 8px;
   padding: 8px;
+
+  max-width: 1000px;
 }
 
 .positive-title {
@@ -40,6 +42,7 @@ ul.tags li:last-child:after {
 
 .negative-title {
   color: $warn;
+  text-decoration: line-through;
 }
 
 .strikethru {
