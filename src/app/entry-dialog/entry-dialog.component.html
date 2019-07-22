@@ -30,8 +30,8 @@
 </div>
 <div mat-dialog-actions class="mat-action-row">
   <button mat-raised-button (click)="stepper.previous()">Back</button>
-  <button *ngIf="stepper.selectedIndex < 4" mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
-  <button *ngIf="stepper.selectedIndex >= 4" mat-raised-button class="mat-primary" (click)="close()">Show me my results</button>
+  <button *ngIf="stepper.selectedIndex < ((rs.fieldList | async) | visible).size - 1" mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
+  <button *ngIf="stepper.selectedIndex >= ((rs.fieldList | async) | visible).size - 1" mat-raised-button class="mat-primary" (click)="close()">Show me my results</button>
 </div>
 
 <!--<div mat-dialog-actions>-->
