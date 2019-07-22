@@ -10,13 +10,13 @@
   <h3>Please make your initial selections. You will have the chance to refine these selections later.</h3>
   <mat-vertical-stepper linear #stepper>
     <!--  <mat-step *ngFor="let field of (rs.fieldList | async) | visible">-->
-    <mat-step *ngFor="let key of manualFieldNames">
+    <mat-step *ngFor="let field of (rs.fieldList | async) | visible">
       <ng-template matStepLabel>
-        <span *ngIf="!rs.getField(key).hasValue">{{rs.getField(key).fieldAnnotation}}</span>
-        <span *ngIf="rs.getField(key).hasValue">{{rs.getField(key).getValueString()}}</span>
+        <span *ngIf="!field.hasValue">{{field.fieldAnnotation}}</span>
+        <span *ngIf="field.hasValue">{{field.getValueString()}}</span>
 
       </ng-template>
-      <app-field-card [field]="rs.getField(key)"></app-field-card>
+      <app-field-card [field]="field"></app-field-card>
     </mat-step>
 
     <!--  <mat-step>-->
