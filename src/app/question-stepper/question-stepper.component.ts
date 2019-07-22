@@ -24,7 +24,7 @@ export class QuestionStepperComponent implements OnInit {
     // 'man_excl_car_adol',
   ];
 
-  @Output() onComplete = new EventEmitter();
+  @Output() complete = new EventEmitter();
 
   // tslint:disable-next-line:variable-name
   constructor(private _formBuilder: FormBuilder, public rs: REDCapService) {}
@@ -38,7 +38,7 @@ export class QuestionStepperComponent implements OnInit {
     });
   }
 
-  complete() {
-    this.onComplete.emit();
+  onComplete() {
+    this.complete.emit();
   }
 }

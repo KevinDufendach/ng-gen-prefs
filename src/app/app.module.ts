@@ -37,7 +37,7 @@ import {MatStepperModule} from '@angular/material';
     SmsLoginDisplayComponent,
     InstructionsDialogComponent,
     QuestionStepperComponent,
-    EntryDialogComponent
+    EntryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +73,7 @@ import {MatStepperModule} from '@angular/material';
   providers: [
     {provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000'}
   ],
-  exports: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

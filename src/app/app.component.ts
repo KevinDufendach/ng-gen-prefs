@@ -28,11 +28,7 @@ export class AppComponent implements OnInit {
     this.fs = fieldService;
 
     console.log('loading project data');
-    this.fieldService.loadProjectData('adolescent_preferences')
-      .then(result => {
-        console.log('project data received');
-        console.log(result);
-      });
+    this.fieldService.loadProjectData('adolescent_preferences');
   }
 
   ngOnInit(): void {
@@ -43,7 +39,8 @@ export class AppComponent implements OnInit {
     this.dialog.open(EntryDialogComponent, {
       minWidth: '400px',
       maxWidth: '800px',
-      hasBackdrop: true
+      hasBackdrop: true,
+      disableClose: true,
     });
   }
 
