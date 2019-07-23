@@ -8,33 +8,20 @@
     disease or increase your chances for developing a disease. It is possible researchers will not have a reason to
     contact you.</p>
   <h3>Please make your initial selections. You will have the chance to refine these selections later.</h3>
+
   <mat-vertical-stepper linear #stepper>
-    <!--  <mat-step *ngFor="let field of (rs.fieldList | async) | visible">-->
-    <mat-step *ngFor="let key of manualFieldNames">
+    <mat-step *ngFor="let field of (rs.fieldList | async) | visible">
       <ng-template matStepLabel>
-        <span *ngIf="!rs.getField(key).hasValue">{{rs.getField(key).fieldAnnotation}}</span>
-        <span *ngIf="rs.getField(key).hasValue">{{rs.getField(key).getValueString()}}</span>
-
+        <span *ngIf="!field.hasValue">{{field.fieldAnnotation}}</span>
+        <span *ngIf="field.hasValue">{{field.getValueString()}}</span>
       </ng-template>
-      <app-field-card [field]="rs.getField(key)"></app-field-card>
+      <app-field-card [field]="field"></app-field-card>
     </mat-step>
-
-    <!--  <mat-step>-->
-    <!--    <ng-template matStepLabel>Show Results</ng-template>-->
-    <!--    View the results of your selections.-->
-    <!--    <div class="mat-action-row space-between">-->
-    <!--      <button mat-raised-button matStepperPrevious>Back</button>-->
-    <!--    </div>-->
-    <!--  </mat-step>-->
   </mat-vertical-stepper>
 </div>
+
 <div mat-dialog-actions class="mat-action-row">
   <button mat-raised-button (click)="stepper.previous()">Back</button>
-  <button *ngIf="stepper.selectedIndex < 4" mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
-  <button *ngIf="stepper.selectedIndex >= 4" mat-raised-button class="mat-primary" (click)="close()">Show me my results</button>
+  <button *ngIf="stepper.selectedIndex < ((rs.fieldList | async) | visible).size - 1" mat-raised-button class="mat-primary" (click)="stepper.next()">Next</button>
+  <button *ngIf="stepper.selectedIndex >= ((rs.fieldList | async) | visible).size - 1" mat-raised-button class="mat-primary" (click)="close()">Show me my results</button>
 </div>
-
-<!--<div mat-dialog-actions>-->
-<!--  <span fxFlex></span>-->
-<!--  <button mat-raised-button class="mat-primary" (click)="close()">Continue</button>-->
-<!--</div>-->

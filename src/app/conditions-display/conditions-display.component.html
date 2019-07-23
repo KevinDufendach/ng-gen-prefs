@@ -6,49 +6,44 @@
     </mat-card-subtitle>
     <mat-card-content>
       <mat-accordion>
-<!--        <ng-container *ngFor="let cond of cs.conditions">-->
-          <mat-expansion-panel *ngFor="let cond of cs.conditions">
-            <mat-expansion-panel-header>
-              <mat-panel-title [ngClass]="(cs.shouldDisplay(cond) ? 'positive-title' : 'negative-title')">
-                <span>{{cond.condition}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                <span fxFlex></span>
-<!--                <span *ngIf="cond.carrier.value">-->
-<!--                  <span [ngClass]="{'strikethru': fs.valueOf('carrier_adol') !== '1'}">CARRIER</span>-->
-<!--                </span>-->
-                <mat-icon *ngIf="isIncluded(cond.id)">lock</mat-icon>
-                <mat-icon *ngIf="isExcluded(cond.id)">block</mat-icon>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>{{cond.description}}</p>
-            <div *ngIf="cond.carrier.value">
-              <h4>Carrier status would <span *ngIf="fs.valueOf('carrier_adol') !== '1'">NOT</span> be reported</h4>
-            </div>
-            <div fxLayout="row">
-              <ul class="tags">
-                <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
-                <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
-                <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
-                <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier</span></li>
-              </ul>
+        <mat-expansion-panel *ngFor="let cond of cs.conditions">
+          <mat-expansion-panel-header>
+            <mat-panel-title [ngClass]="(cs.shouldDisplay(cond) ? 'positive-title' : 'negative-title')">
+              <span>{{cond.condition}}</span>
+            </mat-panel-title>
+            <mat-panel-description>
               <span fxFlex></span>
-              <app-organ-icon [organList]="cond.organs"></app-organ-icon>
-            </div>
-            <mat-action-row>
-              <button mat-button [ngClass]="{'mat-primary': isIncluded(cond.id)}"
-                      (click)="toggleInclude(cond.id)">
-                <mat-icon>lock</mat-icon>
-                Always Report
-              </button>
-              <button mat-button [ngClass]="{'mat-warn': isExcluded(cond.id)}"
-                      (click)="toggleExclude(cond.id)">
-                <mat-icon>block</mat-icon>
-                Never Report
-              </button>
-            </mat-action-row>
-          </mat-expansion-panel>
-<!--        </ng-container>-->
+              <mat-icon *ngIf="isIncluded(cond.id)">lock</mat-icon>
+              <mat-icon *ngIf="isExcluded(cond.id)">block</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{cond.description}}</p>
+          <div *ngIf="cond.carrier.value">
+            <h4>Carrier status would <span *ngIf="fs.valueOf('carrier_adol') !== '1'">NOT</span> be reported</h4>
+          </div>
+          <div fxLayout="row">
+            <ul class="tags">
+              <li><span [ngClass]="{'inapplicable': !cond.preventable}">Preventable</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.treatable}">Treatable</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.adult_onset}">Adult Onset</span></li>
+              <li><span [ngClass]="{'inapplicable': !cond.carrier.value}">Carrier</span></li>
+            </ul>
+            <span fxFlex></span>
+            <app-organ-icon [organList]="cond.organs"></app-organ-icon>
+          </div>
+          <mat-action-row>
+            <button mat-button [ngClass]="{'mat-primary': isIncluded(cond.id)}"
+                    (click)="toggleInclude(cond.id)">
+              <mat-icon>lock</mat-icon>
+              Always Report
+            </button>
+            <button mat-button [ngClass]="{'mat-warn': isExcluded(cond.id)}"
+                    (click)="toggleExclude(cond.id)">
+              <mat-icon>block</mat-icon>
+              Never Report
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
       </mat-accordion>
     </mat-card-content>
   </mat-card>

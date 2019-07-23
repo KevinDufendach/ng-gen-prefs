@@ -61,3 +61,22 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/**
+ * Core JS for IE
+ * IE9, IE10 and IE11 requires all of the following polyfills.
+ * per https://stackoverflow.com/questions/35140718/angular-2-4-5-not-working-in-ie11
+ */
+import 'core-js/es/symbol';
+import 'core-js/es/object';
+import 'core-js/es/function';
+import 'core-js/es/parse-int';
+import 'core-js/es/parse-float';
+import 'core-js/es/number';
+import 'core-js/es/math';
+import 'core-js/es/string';
+import 'core-js/es/date';
+import 'core-js/es/array';
+import 'core-js/es/regexp';
+import 'core-js/es/map';
+import 'core-js/es/set';
